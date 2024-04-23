@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="CineQuebec.Windows.View.AdminAbonnesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CineQuebec.Windows.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="500">
+    <Grid Background="White">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="200">
+            <ListBox Name="lstAbonnes" Background="#FFB1B1B1" SelectionChanged="lstAbonnes_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="24"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+            </ListBox>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" >
+            <Border Name="btnFermer" Width="115" Height="45" Margin="5,5,5,5" BorderBrush="Black" Background="#FFA7A7A7"  BorderThickness="2" CornerRadius="10" MouseUp="btnFermer_MouseUp">
+                <Label Content="Fermer" FontSize="24"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            </Border>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

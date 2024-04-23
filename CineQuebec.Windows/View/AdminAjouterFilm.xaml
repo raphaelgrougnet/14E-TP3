@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="CineQuebec.Windows.View.AdminAjouterFilm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CineQuebec.Windows.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="700" Height="260">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <Label Content="Titre:" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox Name="txtTitre" VerticalAlignment="Center" Width="80" FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
+                        <Label Content="Durée:" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox Name="txtDuree" VerticalAlignment="Center" Width="80"  FontSize="15" KeyDown="txtDuree_KeyDown"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,5,5,5">
+                        <Label Content="Date de sortie:" VerticalAlignment="Center" FontSize="15"/>
+                        <DatePicker Name="dpDateSortie" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <Label Content="Catégorie:" VerticalAlignment="Center" FontSize="15"/>
+                        <ComboBox Name="cbCategorie" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
+                        <Label Content="Acteur:" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox Name="txtActeurs" VerticalAlignment="Center" Width="300"  FontSize="15"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <Label Content="Réalisateur:" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox Name="txtRealisateur" VerticalAlignment="Center" Width="300"  FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
+                        <Label Content="Directeur:" VerticalAlignment="Center" FontSize="15"/>
+                        <TextBox Name="txtDirecteur" VerticalAlignment="Center" Width="200"  FontSize="15"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" Click="btnAjouter_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
