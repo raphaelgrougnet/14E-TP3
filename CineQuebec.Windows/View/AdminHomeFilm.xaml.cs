@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
+using CineQuebec.Windows.Services;
 
 namespace CineQuebec.Windows.View
 {
@@ -24,7 +25,9 @@ namespace CineQuebec.Windows.View
     {
         private List<Film>? _films;
 
-        private RepositoryFilms _repositoryFilms = new RepositoryFilms();
+        private static  RepositoryFilms _repositoryFilms = new();
+        private ServiceFilms _serviceFilms = new(_repositoryFilms);
+
 
         private bool _estAffiche = true;
 
@@ -69,7 +72,7 @@ namespace CineQuebec.Windows.View
             try
             {
                 lstFilms.Items.Clear();
-
+                
                 _films = _repositoryFilms.LoadFilmsAffiche();
 
                 foreach (Film film in _films)

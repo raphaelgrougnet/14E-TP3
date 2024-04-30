@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.DAL.Repositories;
+using CineQuebec.Windows.Services;
 
 namespace CineQuebec.Windows.View
 {
@@ -11,7 +13,9 @@ namespace CineQuebec.Windows.View
     /// </summary>
     public partial class AdminAbonnesControl : UserControl
     {
-        RepositoryAbonnes _repositoryAbonnes = new RepositoryAbonnes();
+        private static RepositoryAbonnes _repositoryAbonnes = new();
+        private ServiceAbonnes _serviceAbonnes = new(_repositoryAbonnes);
+
         public AdminAbonnesControl()
         {
             InitializeComponent();
@@ -23,7 +27,7 @@ namespace CineQuebec.Windows.View
             try
             {
                 
-                List<Abonne> abonnes = _repositoryAbonnes.LoadAbonnes();
+                ReadOnlyCollection<Abonne> abonnes = _serviceAbonnes.GetAbonnes();
                 foreach (var abonne in abonnes)
                 {
                     lstAbonnes.Items.Add(abonne);
