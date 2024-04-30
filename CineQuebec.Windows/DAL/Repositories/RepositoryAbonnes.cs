@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CineQuebec.Windows.DAL.Repositories
 {
-    public class RepositoryAbonnes : GenericRepository<Abonne>
+    public class RepositoryAbonnes : GenericRepository<Abonne>, IRepositoryAbonnes
     {
         public ReadOnlyCollection<Abonne> LoadAbonnes()
         {
