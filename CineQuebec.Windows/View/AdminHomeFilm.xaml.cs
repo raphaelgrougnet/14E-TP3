@@ -38,6 +38,7 @@ namespace CineQuebec.Windows.View
             _repositoryFilms = new RepositoryFilms();
             _serviceFilms = new ServiceFilms(_repositoryFilms);
             AfficherListeFilms();
+            btnReprojection.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -127,6 +128,14 @@ namespace CineQuebec.Windows.View
             AdminReprojeterFilm adminReprojeterFilm = new AdminReprojeterFilm((Film)lstFilms.SelectedItem);
             adminReprojeterFilm.Show();
             AfficherListeFilms();
+        }
+
+        private void LstFilms_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstFilms.SelectedItem != null)
+                btnReprojection.IsEnabled = true;
+            else
+                btnReprojection.IsEnabled = false;
         }
     }
 }

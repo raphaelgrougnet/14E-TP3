@@ -12,7 +12,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="240">
-            <ListBox Name="lstFilms" Background="Gray">
+            <ListBox Name="lstFilms" Background="Gray" SelectionChanged="LstFilms_OnSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Titre}"/>
