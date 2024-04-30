@@ -21,16 +21,19 @@ namespace CineQuebec.Windows.DAL.Repositories
             return films;
         }
 
-        public void AddFilm(Film film)
+        public Film AddFilm(Film film)
         {
             try
             {
                 Collection.InsertOne(film);
+                return film;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Impossible d'ajouter le film " + ex.Message, "Erreur");
             }
+
+            return null;
         }
 
         public List<Film> LoadFilmsAffiche()
