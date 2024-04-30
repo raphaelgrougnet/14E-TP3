@@ -8,8 +8,8 @@
         public bool EstArchive { get; set; }
         public bool EstALaffiche { get; set; }
         public EnumCategorie Categorie { get; init; }
-        public string Acteurs { get; init; }
-        public string Realisateurs { get; init; }
-        public string Directeurs { get; init; }
+        public List<Acteur> Acteurs { get; init; }
+        public List<Realisateur> Realisateurs { get; init; }
+        public List<Directeur> Directeurs { get; init; }
     }
 }

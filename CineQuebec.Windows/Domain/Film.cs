@@ -16,12 +16,12 @@ namespace CineQuebec.Windows.Domain
         public bool EstArchive { get; set; } = false;
         public bool EstALaffiche { get; set; } = false;
         public EnumCategorie Categorie { get; init; }
-        public string Acteurs { get; init; }
-        public string Realisateurs { get; init; }
-        public string Directeurs { get; init; }
+        public List<Acteur> Acteurs { get; init; }
+        public List<Realisateur> Realisateurs { get; init; }
+        public List<Directeur> Directeurs { get; init; }
 
         public Film(ObjectId id, string titre, float duree, DateTime dateSortie,
-            EnumCategorie categorie, string acteurs, string realisateurs, string directeurs) : base(id)
+            EnumCategorie categorie, List<Acteur> acteurs, List<Realisateur> realisateurs, List<Directeur> directeurs) : base(id)
         {
             Titre = titre;
             Duree = duree;
