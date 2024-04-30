@@ -12,7 +12,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="240">
-            <ListBox Name="lstFilms" Background="Gray">
+            <ListBox Name="lstFilms" Background="Gray" SelectionChanged="LstFilms_OnSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Titre}"/>
@@ -30,6 +30,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button Content="Ajouter un film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="Button_Click_1"/>
             <Button x:Name="btnTri" Content="Afficher liste des films à l'affiche" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="Button_Click_2"/>
+            <Button x:Name="btnReprojection" Content="Reprojeter le film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="ReprojeterFilm"/>
             <Button Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Click="Button_Click"/>
         </StackPanel>
         
