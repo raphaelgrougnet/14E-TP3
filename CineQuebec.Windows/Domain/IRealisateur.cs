@@ -9,6 +9,5 @@ namespace CineQuebec.Windows.Domain
     public interface IRealisateur
     {
         public string Nom { get; init; }
-        public string Prenom { get; init; }
     }
 }

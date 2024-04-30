@@ -9,17 +9,15 @@ namespace CineQuebec.Windows.Domain
     public class Realisateur : IRealisateur
     {
         public string Nom { get; init; }
-        public string Prenom { get; init; }
 
-        public Realisateur(string nom, string prenom)
+        public Realisateur(string nom)
         {
             Nom = nom;
-            Prenom = prenom;
         }
 
         public override string ToString()
         {
-            return $"{Prenom} {Nom}";
+            return $"{Nom}";
         }
     }
 }
