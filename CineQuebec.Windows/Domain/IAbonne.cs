@@ -10,6 +10,8 @@
         string Prenom { get; set; }
         byte[] Salt { get; set; }
         string Username { get; set; }
+        EnumCategorie[] Preferences { get; set; }
+        
 
         string ToString();
     }
