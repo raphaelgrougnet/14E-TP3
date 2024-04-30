@@ -13,12 +13,14 @@ namespace CineQuebec.Windows.View
     /// </summary>
     public partial class AdminAbonnesControl : UserControl
     {
-        private static RepositoryAbonnes _repositoryAbonnes = new();
-        private ServiceAbonnes _serviceAbonnes = new(_repositoryAbonnes);
+        private RepositoryAbonnes _repositoryAbonnes;
+        private ServiceAbonnes _serviceAbonnes;
 
         public AdminAbonnesControl()
         {
             InitializeComponent();
+            _repositoryAbonnes = new RepositoryAbonnes();
+            _serviceAbonnes = new ServiceAbonnes(_repositoryAbonnes);
             ChargerAbonnes();
         }
 

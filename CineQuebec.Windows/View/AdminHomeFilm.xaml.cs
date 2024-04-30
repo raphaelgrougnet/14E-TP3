@@ -26,8 +26,8 @@ namespace CineQuebec.Windows.View
     {
         private List<Film>? _films;
 
-        private static  RepositoryFilms _repositoryFilms = new();
-        private ServiceFilms _serviceFilms = new(_repositoryFilms);
+        private RepositoryFilms _repositoryFilms;
+        private ServiceFilms _serviceFilms;
 
 
         private bool _estAffiche = true;
@@ -35,6 +35,8 @@ namespace CineQuebec.Windows.View
         public AdminHomeFilm()
         {
             InitializeComponent();
+            _repositoryFilms = new RepositoryFilms();
+            _serviceFilms = new ServiceFilms(_repositoryFilms);
             AfficherListeFilms();
         }
 
