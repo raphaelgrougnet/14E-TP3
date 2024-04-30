@@ -1,11 +1,12 @@
-﻿using CineQuebec.Windows.Domain;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 
 namespace CineQuebec.Windows.Services.Interfaces;
 
 public interface IServiceFilms
 {
-    public List<Film> GetFilms();
+    public ReadOnlyCollection<Film> GetFilms();
     public Film AddFilm(Film pFilm);
-    public List<Film> LoadFilmsAffiche();
+    public ReadOnlyCollection<Film> LoadFilmsAffiche();
 }

@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.DAL.Repositories;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services.Interfaces;
 using MongoDB.Bson;
@@ -14,7 +15,7 @@ public class ServiceFilms : IServiceFilms
         _repositoryFilms = repositoryFilms;
     }
     
-    public List<Film> GetFilms()
+    public ReadOnlyCollection<Film> GetFilms()
     {
         return _repositoryFilms.LoadFilms();
     }
@@ -24,7 +25,7 @@ public class ServiceFilms : IServiceFilms
         return _repositoryFilms.AddFilm(pFilm);
     }
 
-    public List<Film> LoadFilmsAffiche()
+    public ReadOnlyCollection<Film> LoadFilmsAffiche()
     {
         return _repositoryFilms.LoadFilmsAffiche();
     }

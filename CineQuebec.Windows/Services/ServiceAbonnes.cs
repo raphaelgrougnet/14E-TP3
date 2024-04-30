@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.DAL.Repositories;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services.Interfaces;
 using MongoDB.Bson;
@@ -15,7 +16,7 @@ public class ServiceAbonnes : IServiceAbonnes
         _repositoryAbonnes = repositoryAbonnes;
     }
     
-    public List<Abonne> GetAbonnes()
+    public ReadOnlyCollection<Abonne> GetAbonnes()
     {
         return _repositoryAbonnes.LoadAbonnes();
     }

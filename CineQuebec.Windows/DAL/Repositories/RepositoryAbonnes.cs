@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.Domain;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -6,7 +7,7 @@ namespace CineQuebec.Windows.DAL.Repositories
 {
     public class RepositoryAbonnes : GenericRepository<Abonne>
     {
-        public List<Abonne> LoadAbonnes()
+        public ReadOnlyCollection<Abonne> LoadAbonnes()
         {
             List<Abonne> abonnes = new List<Abonne>();
 
@@ -18,7 +19,7 @@ namespace CineQuebec.Windows.DAL.Repositories
             {
                 Console.WriteLine("Impossible d'obtenir la collection d'abonnés" + ex.Message, "Erreur");
             }
-            return abonnes;
+            return new ReadOnlyCollection<Abonne>(abonnes);
         }
 
         public Abonne FindAbonneById(ObjectId id)

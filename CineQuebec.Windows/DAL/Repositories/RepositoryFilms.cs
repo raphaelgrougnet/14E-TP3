@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.Domain;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -6,7 +7,7 @@ namespace CineQuebec.Windows.DAL.Repositories
 {
     public class RepositoryFilms : GenericRepository<Film>
     {
-        public List<Film> LoadFilms()
+        public ReadOnlyCollection<Film> LoadFilms()
         {
             List<Film> films = new List<Film>();
 
@@ -18,7 +19,7 @@ namespace CineQuebec.Windows.DAL.Repositories
             {
                 Console.WriteLine("Impossible d'obtenir la collection de films" + ex.Message, "Erreur");
             }
-            return films;
+            return new ReadOnlyCollection<Film>(films);
         }
 
         public Film AddFilm(Film film)
@@ -36,7 +37,7 @@ namespace CineQuebec.Windows.DAL.Repositories
             return null;
         }
 
-        public List<Film> LoadFilmsAffiche()
+        public ReadOnlyCollection<Film> LoadFilmsAffiche()
         {
             var films = new List<Film>();
 
@@ -48,7 +49,7 @@ namespace CineQuebec.Windows.DAL.Repositories
             {
                 Console.WriteLine("Impossible d'obtenir la collections des films à l'affiche" + ex.Message, "Erreur");
             }
-            return films;
+            return new ReadOnlyCollection<Film>(films);
         }
     }
 }
