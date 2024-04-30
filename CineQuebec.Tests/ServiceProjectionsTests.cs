@@ -14,7 +14,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjection>();
         var service = new ServiceProjections(mockRepo.Object);
-        var projection = new Projection(ObjectId.GenerateNewId(), "Salle", DateTime.Now, new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, "Acteurs", "Genre", "Directeurs"));
+        var projection = new Projection(ObjectId.GenerateNewId(), "Salle", DateTime.Now, new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>()));
         mockRepo.Setup(r => r.AddProjection(It.IsAny<Projection>())).Returns(projection);
         
         // Act
