@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,6 @@ namespace CineQuebec.Windows.View
         public AdminHomeFilm()
         {
             InitializeComponent();
-            _films = new List<Film>();
             AfficherListeFilms();
         }
 
@@ -56,7 +56,7 @@ namespace CineQuebec.Windows.View
             {
                 lstFilms.Items.Clear();
 
-                _films = _repositoryFilms.LoadFilms();
+                ReadOnlyCollection<Film> _films = _serviceFilms.GetFilms();
 
                 foreach (Film film in _films)
                     lstFilms.Items.Add(film);
@@ -72,8 +72,8 @@ namespace CineQuebec.Windows.View
             try
             {
                 lstFilms.Items.Clear();
-                
-                _films = _repositoryFilms.LoadFilmsAffiche();
+
+                ReadOnlyCollection<Film> _films = _repositoryFilms.LoadFilmsAffiche();
 
                 foreach (Film film in _films)
                     lstFilms.Items.Add(film);
