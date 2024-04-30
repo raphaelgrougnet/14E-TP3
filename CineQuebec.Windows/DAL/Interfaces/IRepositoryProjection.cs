@@ -4,5 +4,5 @@ namespace CineQuebec.Windows.DAL.Interfaces;
 
 public interface IRepositoryProjection
 {
-    public Projection AddProjection(IProjection projection);
+    public Projection AddProjection(Projection projection);
 }

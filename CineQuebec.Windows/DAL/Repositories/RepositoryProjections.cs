@@ -5,8 +5,16 @@ namespace CineQuebec.Windows.DAL.Repositories;
 
 public class RepositoryProjections : GenericRepository<Projection>, IRepositoryProjection
 {
-    public Projection AddProjection(IProjection projection)
+    public Projection AddProjection(Projection projection)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Collection.InsertOne(projection);
+            return projection;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Erreur lors de l'ajout de la projection", e);
+        }
     }
 }
