@@ -13,7 +13,7 @@ namespace CineQuebec.Tests
         [Fact]
         public void UdpdateAbonneShouldReturnUpdatedAbonne()
         {
-            var mockRepository = new Mock<IAbonneRepository>();
+            //var mockRepository = new Mock<IAbonneRepository>();
         }
     }
 }
