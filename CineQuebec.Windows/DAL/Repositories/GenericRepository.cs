@@ -7,7 +7,7 @@ namespace CineQuebec.Windows.DAL.Repositories
     {
         private IMongoClient mongoDBClient;
         private IMongoDatabase database;
-        private const string NomDatabase = "TP2DB";
+        private const string NomDatabase = "TP3DB";
         private string NomCollection => typeof(TEntite).Name.ToLower() + "s";
         protected IMongoCollection<TEntite> Collection => database.GetCollection<TEntite>(NomCollection);
 

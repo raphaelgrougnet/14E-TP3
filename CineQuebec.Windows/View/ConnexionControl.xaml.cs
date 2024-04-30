@@ -89,8 +89,7 @@ namespace CineQuebec.Windows.View
                     return;
 
                 if (!TesterEstAdmin(abonne))
-                    return;
-
+                    ((MainWindow)Application.Current.MainWindow).AbonneHomeControl();
 
                 ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
             }

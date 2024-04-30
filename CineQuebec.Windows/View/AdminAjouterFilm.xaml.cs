@@ -31,11 +31,44 @@ namespace CineQuebec.Windows.View
             cbCategorie.ItemsSource = Enum.GetValues(typeof(EnumCategorie));
         }
 
-        private (string titre, string duree, DatePicker dateSortie, EnumCategorie categorie, 
-            string acteurs, string realisateur, string directeur) GetContenuChamps()
-        {        
-            return (txtTitre.Text.Trim(), txtDuree.Text.Trim(), dpDateSortie, (EnumCategorie)cbCategorie.SelectedItem, 
-                txtActeurs.Text.Trim(), txtRealisateur.Text.Trim(), txtDirecteur.Text.Trim());
+        //private (string titre, string duree, DatePicker dateSortie, EnumCategorie categorie, 
+        //    string acteurs, string realisateur, string directeur) GetContenuChamps()
+        //{        
+        //    return (txtTitre.Text.Trim(), txtDuree.Text.Trim(), dpDateSortie, (EnumCategorie)cbCategorie.SelectedItem, 
+        //        txtActeurs.Text.Trim(), txtRealisateur.Text.Trim(), txtDirecteur.Text.Trim());
+        //}
+
+        private (string titre, string duree, DatePicker dateSortie, EnumCategorie categorie,
+         List<Acteur> acteurs, List<Realisateur> realisateur, List<Directeur> directeur) GetContenuChamps()
+        {
+            string acteurs = txtActeurs.Text.Trim();
+            string realisateur = txtRealisateur.Text.Trim();
+            string directeur = txtDirecteur.Text.Trim();
+
+            // Split the comma-separated strings into arrays
+            string[] acteursArray = acteurs.Split(',');
+            string[] realisateurArray = realisateur.Split(',');
+            string[] directeurArray = directeur.Split(',');
+
+            List<Acteur> acteursList = new List<Acteur>();
+            List<Realisateur> realisateurList = new List<Realisateur>();
+            List<Directeur> directeurList = new List<Directeur>();
+            
+            // Add each item in the arrays to the corresponding list
+            foreach (string item in acteursArray)
+            {
+                acteursList.Add(new Acteur(item));
+            }
+            foreach (string item in realisateurArray)
+            {
+                realisateurList.Add(new Realisateur(item));
+            }   
+            foreach (string item in directeurArray)
+            {
+                directeurList.Add(new Directeur(item));
+            }
+
+            return (txtTitre.Text.Trim(), txtDuree.Text.Trim(), dpDateSortie, (EnumCategorie)cbCategorie.SelectedItem, acteursList, realisateurList, directeurList);
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
@@ -78,11 +111,11 @@ namespace CineQuebec.Windows.View
                 messageErreur += "Veuillez remplir le champ durée\n";
             if (contenuChamps.dateSortie.SelectedDate == null)
                 messageErreur += "Veuillez remplir le champ date de sortie\n";
-            if (contenuChamps.acteurs == "")
+            if (contenuChamps.acteurs.Count == 0 || contenuChamps.acteurs == null)
                 messageErreur += "Veuillez remplir le champ acteurs\n";
-            if (contenuChamps.realisateur == "")
+            if (contenuChamps.realisateur.Count == 0 || contenuChamps.realisateur == null)
                 messageErreur += "Veuillez remplir le champ réalisateur\n";
-            if (contenuChamps.directeur == "")
+            if (contenuChamps.directeur.Count == 0 || contenuChamps.directeur == null)
                 messageErreur += "Veuillez remplir le champ directeur\n";
             if (contenuChamps.categorie == 0)
                 messageErreur += "Veuillez choisir une catégorie\n";

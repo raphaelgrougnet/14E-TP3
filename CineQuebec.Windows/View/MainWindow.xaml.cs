@@ -33,5 +33,10 @@ namespace CineQuebec.Windows
         {
             mainContentControl.Content = new AdminAjouterFilm();
         }
+
+        public void AbonneHomeControl()
+        {
+            mainContentControl.Content = new AbonneHomeControl();
+        }
     }
 }
