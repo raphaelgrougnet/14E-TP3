@@ -121,5 +121,12 @@ namespace CineQuebec.Windows.View
             ChangerContenuListe();
             ChangerAffichageBoutton();
         }
+
+        private void ReprojeterFilm(object sender, RoutedEventArgs e)
+        {
+            AdminReprojeterFilm adminReprojeterFilm = new AdminReprojeterFilm((Film)lstFilms.SelectedItem);
+            adminReprojeterFilm.Show();
+            AfficherListeFilms();
+        }
     }
 }
