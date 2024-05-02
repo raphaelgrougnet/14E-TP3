@@ -14,7 +14,7 @@ namespace CineQuebec.Tests
     public class ServiceAbonnesTests
     {
         [Fact]
-        public void UdpdateAbonneShouldReturnUpdatedAbonne()
+        public void UpdateAbonneShouldReturnUpdatedAbonne()
         {
             // Arrange
             var mockRepository = new Mock<IRepositoryAbonnes>();
@@ -33,7 +33,7 @@ namespace CineQuebec.Tests
             var result = service.UpdateAbonne(id, preferences);
 
             //Assert
-            Assert.Equal(true, result);
+            Assert.True(result);
 
 
         }
