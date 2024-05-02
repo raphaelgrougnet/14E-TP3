@@ -68,7 +68,7 @@ namespace CineQuebec.Windows.View
         {
             if (!abonne.EstAdmin)
             {
-                MessageBox.Show("Vous n'êtes pas administrateur, vous ne pouvez pas accéder à l'interface", "Connexion", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Vous n'êtes pas administrateur, vous ne pouvez pas accéder à l'interface", "Connexion", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
@@ -89,7 +89,10 @@ namespace CineQuebec.Windows.View
                     return;
 
                 if (!TesterEstAdmin(abonne))
-                    ((MainWindow)Application.Current.MainWindow).AbonneHomeControl();
+                {
+                    ((MainWindow)Application.Current.MainWindow).AbonneHomeControl(abonne);
+                    return;
+                }
 
                 ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
             }

@@ -19,14 +19,21 @@ namespace CineQuebec.Tests
             // Arrange
             var mockRepository = new Mock<IRepositoryAbonnes>();
             var service = new ServiceAbonnes(mockRepository.Object);
-            var abonne = new Mock<IAbonne>();
-            mockRepository.Setup(x => x.UpdateAbonne(abonne.Object)).Returns(abonne.Object);
+            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f"); //change this to a real ObjectId
+
+            var preferences = new Preference(id, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<EnumCategorie>());
+            preferences.Acteurs.Add(new Acteur("Albert"));
+            preferences.Realisateurs.Add(new Realisateur("Bob"));
+            preferences.Directeurs.Add(new Directeur("Charlie"));
+            preferences.Categories.Add(EnumCategorie.Comedie);
+
+            mockRepository.Setup(x => x.UpdateAbonne(id, preferences)).Returns(true);
 
             //Act
-            var result = service.UpdateAbonne(abonne.Object);
+            var result = service.UpdateAbonne(id, preferences);
 
             //Assert
-            Assert.Equal(abonne.Object, result);
+            Assert.Equal(true, result);
 
 
         }

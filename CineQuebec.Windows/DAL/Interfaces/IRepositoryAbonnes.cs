@@ -10,4 +10,5 @@ public interface IRepositoryAbonnes
     public Abonne FindAbonneById(ObjectId id);
 
     public Abonne FindAbonneByUsername(string username);
+    public bool UpdateAbonne(ObjectId id, Preference preference);
 }

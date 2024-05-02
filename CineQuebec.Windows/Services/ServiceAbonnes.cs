@@ -31,4 +31,9 @@ public class ServiceAbonnes : IServiceAbonnes
     {
         return _repositoryAbonnes.FindAbonneByUsername(username);
     }
+
+    public bool UpdateAbonne(ObjectId id, Preference preference)
+    {
+        return _repositoryAbonnes.UpdateAbonne(id, preference);
+    }
 }
