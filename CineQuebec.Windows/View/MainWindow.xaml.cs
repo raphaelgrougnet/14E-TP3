@@ -44,5 +44,10 @@ namespace CineQuebec.Windows
         {
             mainContentControl.Content = new AbonneMesPreferences(abonne);
         }
+
+        public void AbonneAjouterPreference(Abonne abonne)
+        {
+            mainContentControl.Content = new AbonneAjouterPreference(abonne);
+        }
     }
 }
