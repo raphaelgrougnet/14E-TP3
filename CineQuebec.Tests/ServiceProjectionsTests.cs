@@ -12,13 +12,15 @@ public class ServiceProjectionsTests
     public void ProgrammerReprojectionShouldReturnReprojection()
     {
         // Arrange
-        var mockRepo = new Mock<IRepositoryProjection>();
+        var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25); 
         var projection = new Projection(ObjectId.GenerateNewId(), "Salle", DateTime.Now, new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>()));
         mockRepo.Setup(r => r.AddProjection(It.IsAny<Projection>())).Returns(projection);
         
         // Act
-        var result = service.ProgrammerReprojection(projection);
+        var result = service.ProgrammerReprojection(film, salle);
         
         // Assert
         Assert.Equal(projection, result);

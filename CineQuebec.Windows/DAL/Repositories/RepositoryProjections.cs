@@ -3,7 +3,7 @@ using CineQuebec.Windows.Domain;
 
 namespace CineQuebec.Windows.DAL.Repositories;
 
-public class RepositoryProjections : GenericRepository<Projection>, IRepositoryProjection
+public class RepositoryProjections : GenericRepository<Projection>, IRepositoryProjections
 {
     public Projection AddProjection(Projection projection)
     {

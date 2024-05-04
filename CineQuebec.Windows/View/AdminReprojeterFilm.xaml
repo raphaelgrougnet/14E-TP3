@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="30">Programation d'une reprojection pour :</TextBlock>
         <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0 15 0 0 ">Avatar le dernier maitre de l'air</TextBlock>
@@ -27,8 +27,13 @@
         </StackPanel>
         <TextBlock Grid.Row="3" HorizontalAlignment="Center" TextDecorations="Underline" Margin="0 10 0 10 ">N'est pas en salle actuellement</TextBlock>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnReprojeter" Content="Reprojeter" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5"/>
+            <TextBlock Margin="0 0 5 0"> Salle de la reprojection :</TextBlock>
+            <ComboBox Name="cboSalles" ItemsSource="{Binding}" SelectionChanged="CboSalles_OnSelectionChanged"/>
+        </StackPanel>
+       
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnReprojeter" Content="Reprojeter" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5" Click="BtnReprojeter_OnClick"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5" Click="BtnAnnuler_OnClick"/>
 
         </StackPanel>
     </Grid>

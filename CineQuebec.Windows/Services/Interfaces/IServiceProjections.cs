@@ -4,6 +4,6 @@ namespace CineQuebec.Windows.Services.Interfaces;
 
 public interface IServiceProjections
 {
-    public Projection ProgrammerReprojection(Projection pProjection);
+    public Projection ProgrammerReprojection(Film pFilm, Salle pSalle);
 
 }
