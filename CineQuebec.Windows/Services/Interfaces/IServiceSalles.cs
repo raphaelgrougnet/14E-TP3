@@ -1,8 +1,9 @@
-﻿using CineQuebec.Windows.Domain;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.Domain;
 
 namespace CineQuebec.Windows.Services.Interfaces;
 
 public interface IServiceSalles
 {
-    public List<Salle> GetSalles();
+    public ReadOnlyCollection<Salle> GetSalles();
 }

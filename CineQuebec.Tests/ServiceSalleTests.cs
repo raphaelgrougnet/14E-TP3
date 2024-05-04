@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.DAL.Interfaces;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services;
 using MongoDB.Bson;
@@ -14,11 +15,11 @@ public class ServiceSalleTests
         // Arrange
         var mockRepo = new Mock<IRepositorySalles>();
         var service = new ServiceSalles(mockRepo.Object);
-        var salles = new List<Salle>
+        var salles = new ReadOnlyCollection<Salle>(new List<Salle>
         {
             new Salle(ObjectId.GenerateNewId(), "Salle1", 25),
             new Salle(ObjectId.GenerateNewId(), "Salle2", 50)
-        };
+        });
         mockRepo.Setup(r => r.LoadSalles()).Returns(salles);
         
         // Act

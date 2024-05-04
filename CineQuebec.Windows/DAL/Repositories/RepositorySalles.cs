@@ -1,4 +1,5 @@
-﻿using CineQuebec.Windows.DAL.Interfaces;
+﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.Domain;
 using MongoDB.Driver;
 
@@ -6,12 +7,11 @@ namespace CineQuebec.Windows.DAL.Repositories;
 
 public class RepositorySalles : GenericRepository<Salle>, IRepositorySalles
 {
-    public List<Salle> LoadSalles()
+    public ReadOnlyCollection<Salle> LoadSalles()
     {
-        List<Salle> salles = new List<Salle>();
         try
         {
-            salles = Collection.Aggregate().ToList();
+            ReadOnlyCollection<Salle> salles = new ReadOnlyCollection<Salle>(Collection.Aggregate().ToList());
             return salles;
         }
         catch (Exception e)

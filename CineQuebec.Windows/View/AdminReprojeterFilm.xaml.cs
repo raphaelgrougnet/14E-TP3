@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,7 +16,7 @@ public partial class AdminReprojeterFilm : Window
     private RepositoryProjections _repositoryProjections;
     private ServiceProjections _serviceProjections;
     
-    private List<Salle> _salles;
+    private ReadOnlyCollection<Salle> _salles;
     private RepositorySalles _repositorySalles;
     private ServiceSalles _serviceSalles;
     
@@ -23,18 +24,55 @@ public partial class AdminReprojeterFilm : Window
     public AdminReprojeterFilm(Film pFilm)
     {
         InitializeComponent();
-        _film = pFilm;
+        
         _repositoryProjections = new RepositoryProjections();
         _serviceProjections = new ServiceProjections(_repositoryProjections);
         
         _repositorySalles = new RepositorySalles();
         _serviceSalles = new ServiceSalles(_repositorySalles);
         
+        _film = pFilm;
+        
+        
+        ChargerDetailsFilm(_film);
+        
+        ChargerListeSalles();
+        
+        
+    }
+
+
+    private void ChargerListeSalles()
+    {
         _salles = _serviceSalles.GetSalles();
         cboSalles.ItemsSource = _salles;
         if (_salles.Count > 0) cboSalles.SelectedIndex = 0;
     }
+    
+    private void ChangerAffichageEnSalle()
+    {
+        if (_serviceProjections.IsFilmEnSalle(_film))
+        {
+            txtEnSalleFilm.Text = "Le film est actuellement en salle.";
+            btnReprojeter.IsEnabled = false;
+        }
+        else
+        {
+            txtEnSalleFilm.Text = "Le film n'est pas actuellement en salle.";
+            btnReprojeter.IsEnabled = true;
+        }
+    }
 
+    private void ChargerDetailsFilm(Film pFilm)
+    {
+        txtFilm.Text = pFilm.Titre;
+        txtDureeFilm.Text = "Durée : " + pFilm.Duree + " minutes";
+        txtSortieFilm.Text = "Date de sortie : " + pFilm.DateSortie.ToString("dd/MM/yyyy");
+        ChangerAffichageEnSalle();
+    }
+    
+    
+    
     private void BtnReprojeter_OnClick(object sender, RoutedEventArgs e)
     {
         if (cboSalles.SelectedItem == null)
