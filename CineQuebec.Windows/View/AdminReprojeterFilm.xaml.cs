@@ -13,10 +13,13 @@ public partial class AdminReprojeterFilm : Window
     private Film _film;
     private RepositoryProjections _repositoryProjections;
     private ServiceProjections _serviceProjections;
-    private ReadOnlyCollection<Salle> _salles;
     private RepositorySalles _repositorySalles;
     private ServiceSalles _serviceSalles;
+    private RepositoryFilms _repositoryFilms;
+    private ServiceFilms _serviceFilms;
     private Salle _salleSelectionnee;
+    private ReadOnlyCollection<Salle> _salles;
+
     
     public AdminReprojeterFilm(Film pFilm)
     {
@@ -25,6 +28,8 @@ public partial class AdminReprojeterFilm : Window
         _serviceProjections = new ServiceProjections(_repositoryProjections);
         _repositorySalles = new RepositorySalles();
         _serviceSalles = new ServiceSalles(_repositorySalles);
+        _repositoryFilms = new RepositoryFilms();
+        _serviceFilms = new ServiceFilms(_repositoryFilms);
         _film = pFilm;
 
         ChargerDetailsFilm(_film);
@@ -77,6 +82,8 @@ public partial class AdminReprojeterFilm : Window
         {
             
             _serviceProjections.ProgrammerReprojection(_film, _salleSelectionnee);
+            _film.EstALaffiche = true;
+            _serviceFilms.UpdateFilm(_film);
             MessageBox.Show("Le film a été reprojeté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();
         }

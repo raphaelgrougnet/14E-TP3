@@ -7,7 +7,7 @@ using Moq;
 
 namespace CineQuebec.Tests;
 
-public class ServiceSalleTests
+public class ServiceSallesTests
 {
     [Fact]
     public void GetSallesShouldReturnSalles()

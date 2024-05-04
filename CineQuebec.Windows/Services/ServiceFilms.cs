@@ -29,4 +29,9 @@ public class ServiceFilms : IServiceFilms
     {
         return _repositoryFilms.LoadFilmsAffiche();
     }
+
+    public Film UpdateFilm(Film pFilm)
+    {
+        return _repositoryFilms.UpdateFilm(pFilm);
+    }
 }

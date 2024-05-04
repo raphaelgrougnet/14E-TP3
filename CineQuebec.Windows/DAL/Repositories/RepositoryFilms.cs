@@ -51,5 +51,21 @@ namespace CineQuebec.Windows.DAL.Repositories
             }
             return new ReadOnlyCollection<Film>(films);
         }
+        
+        public Film UpdateFilm(Film film)
+        {
+            try
+            {
+                var filter = Builders<Film>.Filter.Eq("_id", film._id);
+                Collection.ReplaceOne(filter, film);
+                return film;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Impossible de mettre à jour le film " + ex.Message, "Erreur");
+            }
+
+            return null;
+        }
     }
 }
