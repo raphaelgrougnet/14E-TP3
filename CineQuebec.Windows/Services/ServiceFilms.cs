@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services.Interfaces;
@@ -8,9 +9,9 @@ namespace CineQuebec.Windows.Services;
 
 public class ServiceFilms : IServiceFilms
 {
-    private RepositoryFilms _repositoryFilms;
+    private IRepositoryFilms _repositoryFilms;
     
-    public ServiceFilms(RepositoryFilms repositoryFilms)
+    public ServiceFilms(IRepositoryFilms repositoryFilms)
     {
         _repositoryFilms = repositoryFilms;
     }
