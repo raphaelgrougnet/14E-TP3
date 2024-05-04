@@ -1,0 +1,39 @@
+﻿name: .NET Core Desktop
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+      - name: Clônage du dépôt GIT
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configuration de .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Obtention des dépendances
+        run: dotnet restore
+      - name: Compilation
+        run: dotnet build --no-restore
+      - name: Exécution des tests unitaires
+        id: tests
+        run: dotnet test --no-build --verbosity normal
+      - name: Créer une issue si les tests échouent
+        if: ${{ failure() }}
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const issue = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Les tests ont échoué",
+              body: "Les tests ont échoué pour le commit " + context.sha
+            }
+            github.issues.create(issue)
