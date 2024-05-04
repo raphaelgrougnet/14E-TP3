@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
 using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services;
@@ -15,27 +13,21 @@ public partial class AdminReprojeterFilm : Window
     private Film _film;
     private RepositoryProjections _repositoryProjections;
     private ServiceProjections _serviceProjections;
-    
     private ReadOnlyCollection<Salle> _salles;
     private RepositorySalles _repositorySalles;
     private ServiceSalles _serviceSalles;
-    
     private Salle _salleSelectionnee;
+    
     public AdminReprojeterFilm(Film pFilm)
     {
         InitializeComponent();
-        
         _repositoryProjections = new RepositoryProjections();
         _serviceProjections = new ServiceProjections(_repositoryProjections);
-        
         _repositorySalles = new RepositorySalles();
         _serviceSalles = new ServiceSalles(_repositorySalles);
-        
         _film = pFilm;
-        
-        
+
         ChargerDetailsFilm(_film);
-        
         ChargerListeSalles();
         
         
