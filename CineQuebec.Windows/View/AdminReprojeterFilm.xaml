@@ -5,8 +5,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CineQuebec.Windows.View"
         mc:Ignorable="d"
-        Title="AdminReprojeterFilm" Height="450" Width="800">
-    <Grid>
-        
+        Title="AdminReprojeterFilm" Height="300" Width="800">
+    <Grid VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="30">Programation d'une reprojection pour :</TextBlock>
+        <TextBlock Name="txtFilm" Grid.Row="1" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0 15 0 0 "></TextBlock>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+            <TextBlock Name="txtDureeFilm" HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" Margin="0 0 5 0 ">Durée : *** minutes</TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" Margin="0 0 0 0 ">|</TextBlock>
+            <TextBlock Name="txtSortieFilm" HorizontalAlignment="Center" FontSize="15" FontStyle="Italic" Margin="5 0 0 0 ">Date de sortie : ****-**-**</TextBlock>
+        </StackPanel>
+        <TextBlock Name="txtEnSalleFilm" Grid.Row="3" HorizontalAlignment="Center" TextDecorations="Underline" Margin="0 10 0 10 ">N'est pas en salle actuellement</TextBlock>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Margin="0 0 5 0"> Salle de la reprojection :</TextBlock>
+            <ComboBox Name="cboSalles" ItemsSource="{Binding}" SelectionChanged="CboSalles_OnSelectionChanged"/>
+        </StackPanel>
+       
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnReprojeter" Content="Reprojeter" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5" Click="BtnReprojeter_OnClick"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5" Click="BtnAnnuler_OnClick"/>
+
+        </StackPanel>
     </Grid>
 </Window>

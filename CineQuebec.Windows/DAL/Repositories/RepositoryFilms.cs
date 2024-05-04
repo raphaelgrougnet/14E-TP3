@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CineQuebec.Windows.DAL.Repositories
 {
-    public class RepositoryFilms : GenericRepository<Film>
+    public class RepositoryFilms : GenericRepository<Film>, IRepositoryFilms
     {
         public ReadOnlyCollection<Film> LoadFilms()
         {
@@ -50,6 +51,22 @@ namespace CineQuebec.Windows.DAL.Repositories
                 Console.WriteLine("Impossible d'obtenir la collections des films à l'affiche" + ex.Message, "Erreur");
             }
             return new ReadOnlyCollection<Film>(films);
+        }
+        
+        public Film UpdateFilm(Film film)
+        {
+            try
+            {
+                var filter = Builders<Film>.Filter.Eq("_id", film._id);
+                Collection.ReplaceOne(filter, film);
+                return film;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Impossible de mettre à jour le film " + ex.Message, "Erreur");
+            }
+
+            return null;
         }
     }
 }
