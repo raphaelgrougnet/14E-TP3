@@ -9,7 +9,7 @@ namespace CineQuebec.Tests;
 public class ServiceFilmsTests
 {
     [Fact]
-    public void UpdateFilmShouldReturnUpdatedFilm()
+    public void UpdateFilmShouldUpdateInRepo()
     {
         // Arrange
         var mockRepo = new Mock<IRepositoryFilms>();
@@ -22,6 +22,6 @@ public class ServiceFilmsTests
         var result = service.UpdateFilm(film);
         
         // Assert
-        Assert.Equal(film, result);
+        mockRepo.Verify(r => r.UpdateFilm(film), Times.Once);
     }
 }
