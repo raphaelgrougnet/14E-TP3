@@ -12,11 +12,11 @@ namespace CineQuebec.Windows.Domain
         public byte[] Salt { get; set; }
         public bool EstAdmin { get; init; } = false;
         public DateTime DateAdhesion { get; init; } = DateTime.Now;
-        public EnumCategorie[] Preferences { get; set; }
+        public Preference Preferences { get; set; }
         
 
         public Abonne(ObjectId id, string nom, string prenom, string username,
-            string courriel, byte[] password, byte[] salt, EnumCategorie[] preferences) : base(id)
+            string courriel, byte[] password, byte[] salt, Preference preferences) : base(id)
         {
             Nom = nom;
             Prenom = prenom;
@@ -29,6 +29,26 @@ namespace CineQuebec.Windows.Domain
 
         public Abonne() : base(ObjectId.Empty)
         {
+        }
+
+        public void AjouterActeur(Acteur acteur)
+        {
+            Preferences.Acteurs.Add(acteur);
+        }
+
+        public void AjouterCategorie(EnumCategorie categorie)
+        {
+            Preferences.Categories.Add(categorie);
+        }
+
+        public void AjouterDirecteur(Directeur directeur)
+        {
+            Preferences.Directeurs.Add(directeur);
+        }
+
+        public void AjouterRealisateur(Realisateur realisateur)
+        {
+            Preferences.Realisateurs.Add(realisateur);
         }
 
         public override string ToString()

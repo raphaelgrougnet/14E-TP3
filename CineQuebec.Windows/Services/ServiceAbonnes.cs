@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.Services.Interfaces;
@@ -9,9 +10,9 @@ namespace CineQuebec.Windows.Services;
 public class ServiceAbonnes : IServiceAbonnes
 {
     
-    private RepositoryAbonnes _repositoryAbonnes;
+    private IRepositoryAbonnes _repositoryAbonnes;
     
-    public ServiceAbonnes(RepositoryAbonnes repositoryAbonnes)
+    public ServiceAbonnes(IRepositoryAbonnes repositoryAbonnes)
     {
         _repositoryAbonnes = repositoryAbonnes;
     }
@@ -29,5 +30,10 @@ public class ServiceAbonnes : IServiceAbonnes
     public Abonne GetAbonneByUsername(string username)
     {
         return _repositoryAbonnes.FindAbonneByUsername(username);
+    }
+
+    public bool UpdateAbonne(ObjectId id, Preference preference)
+    {
+        return _repositoryAbonnes.UpdateAbonne(id, preference);
     }
 }

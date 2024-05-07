@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using CineQuebec.Windows.DAL.Interfaces;
 using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CineQuebec.Windows.DAL.Repositories
 {
-    public class RepositoryAbonnes : GenericRepository<Abonne>
+    public class RepositoryAbonnes : GenericRepository<Abonne>, IRepositoryAbonnes
     {
         public ReadOnlyCollection<Abonne> LoadAbonnes()
         {
@@ -51,5 +52,29 @@ namespace CineQuebec.Windows.DAL.Repositories
             }
             return abonne;
         }
+
+        public bool UpdateAbonne(ObjectId id, Preference preference)
+        {
+            try
+            {
+                var filter = Builders<Abonne>.Filter.Eq(s => s._id, id);
+                var update = Builders<Abonne>.Update.Set(s => s.Preferences, preference);
+
+                var result = Collection.UpdateOne(filter, update);
+
+                if (result.IsAcknowledged && result.ModifiedCount > 0)
+                    return true;
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Impossible de mettre à jour l'abonné: " + ex.Message, "Erreur");
+                
+            }
+            return false;
+        }
+
+        
     }
 }

@@ -9,5 +9,6 @@ public interface IServiceAbonnes
     public ReadOnlyCollection<Abonne> GetAbonnes();
     public Abonne GetAbonneById(ObjectId id);
     public Abonne GetAbonneByUsername(string username);
-    
+    public bool UpdateAbonne(ObjectId id, Preference preference);
+
 }
