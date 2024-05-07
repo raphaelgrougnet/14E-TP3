@@ -28,4 +28,46 @@ public class ServiceSallesTests
         // Assert
         Assert.Equal(salles, result);
     }
+    [Fact]
+    public void GetSallesShouldReturnEmptyWhenNoSalles()
+    {
+        // Arrange
+        var mockRepo = new Mock<IRepositorySalles>();
+        var service = new ServiceSalles(mockRepo.Object);
+        var salles = new ReadOnlyCollection<Salle>(new List<Salle>());
+        mockRepo.Setup(r => r.LoadSalles()).Returns(salles);
+    
+        // Act
+        var result = service.GetSalles();
+    
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Fact]
+    public void GetSallesShouldReturnNullWhenRepoReturnsNull()
+    {
+        // Arrange
+        var mockRepo = new Mock<IRepositorySalles>();
+        var service = new ServiceSalles(mockRepo.Object);
+        mockRepo.Setup(r => r.LoadSalles()).Returns((ReadOnlyCollection<Salle>)null);
+    
+        // Act
+        var result = service.GetSalles();
+    
+        // Assert
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void GetSallesShouldThrowExceptionWhenRepoThrowsException()
+    {
+        // Arrange
+        var mockRepo = new Mock<IRepositorySalles>();
+        var service = new ServiceSalles(mockRepo.Object);
+        mockRepo.Setup(r => r.LoadSalles()).Throws(new Exception());
+    
+        // Act & Assert
+        Assert.Throws<Exception>(() => service.GetSalles());
+    }
 }
