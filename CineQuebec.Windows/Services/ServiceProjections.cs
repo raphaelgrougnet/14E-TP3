@@ -18,6 +18,14 @@ public class ServiceProjections  : IServiceProjections
 
     public Projection ProgrammerReprojection(Film pFilm, Salle pSalle)
     {
+        if (pFilm == null)
+        {
+            throw new ArgumentNullException("Le film ne peut pas être null");
+        }
+        if (pSalle == null)
+        {
+            throw new ArgumentNullException("La salle ne peut pas être null");
+        }
         Projection projection = new Projection(ObjectId.GenerateNewId(), pSalle, DateTime.Now, pFilm);
         return _repositoryProjectionses.AddProjection(projection);
     }
@@ -30,6 +38,10 @@ public class ServiceProjections  : IServiceProjections
     public bool IsFilmEnSalle(Film film)
     {
         ReadOnlyCollection<Projection> projections = _repositoryProjectionses.LoadProjections();
+        if (projections == null)
+        {
+            return false;
+        }
         foreach (Projection projection in projections)
         {
             if (projection.Film._id == film._id)
