@@ -9,8 +9,8 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -95,10 +95,7 @@
                 </ListBox>
             </Border>
         </StackPanel>
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter une préférence" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button Grid.Row="2" Grid.Column="2" Content="Supprimer une préférence" VerticalAlignment="Center" Margin="0,0,40,0" Click="Button_Click_1"/>
-            <Button Grid.Row="2" Grid.Column="2" Content="Quitter" VerticalAlignment="Center" Click="Button_Click_2"/>
-        </StackPanel>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Ajouter une préférence" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" Width="175" Height="40"/>
+        <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Quitter" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_2" Width="175" Height="40"/>
     </Grid>
 </UserControl>
