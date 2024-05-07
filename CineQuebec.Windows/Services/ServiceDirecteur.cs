@@ -14,6 +14,11 @@ namespace CineQuebec.Windows.Services
     {
         private IRepositoryDirecteur _repositoryDirecteur;
 
+        public ServiceDirecteur(IRepositoryDirecteur repositoryDirecteur)
+        {
+            _repositoryDirecteur = repositoryDirecteur;
+        }
+
         public ReadOnlyCollection<Directeur> LoadDirecteurs()
         {
             return _repositoryDirecteur.LoadDirecteurs();

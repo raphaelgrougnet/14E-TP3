@@ -13,6 +13,11 @@ namespace CineQuebec.Windows.Services
     public class ServiceActeur : IServiceActeur
     {
         private IRepositoryActeur _repositoryActeur;
+
+        public ServiceActeur(IRepositoryActeur repositoryActeur)
+        {
+            _repositoryActeur = repositoryActeur;
+        }
         public ReadOnlyCollection<Acteur> LoadActeurs()
         {
             return _repositoryActeur.LoadActeurs();
