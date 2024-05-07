@@ -13,10 +13,11 @@ namespace CineQuebec.Windows.Domain
         public bool EstAdmin { get; init; } = false;
         public DateTime DateAdhesion { get; init; } = DateTime.Now;
         public Preference Preferences { get; set; }
+        public List<Film> FilmsVisionnes { get; set; } = new List<Film>();
         
 
         public Abonne(ObjectId id, string nom, string prenom, string username,
-            string courriel, byte[] password, byte[] salt, Preference preferences) : base(id)
+            string courriel, byte[] password, byte[] salt, Preference preferences, List<Film> filmsVisonnes, List<Film> filmsVisionnes) : base(id)
         {
             Nom = nom;
             Prenom = prenom;
@@ -25,6 +26,7 @@ namespace CineQuebec.Windows.Domain
             MotDePasse = password;
             Salt = salt;
             Preferences = preferences;
+            FilmsVisionnes = filmsVisonnes;
         }
 
         public Abonne() : base(ObjectId.Empty)

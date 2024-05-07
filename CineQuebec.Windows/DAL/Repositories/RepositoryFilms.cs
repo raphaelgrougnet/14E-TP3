@@ -68,23 +68,6 @@ namespace CineQuebec.Windows.DAL.Repositories
 
             return null;
         }
-
-        public ReadOnlyCollection<Film> LoadFilmsVisionnes(Abonne abonne)
-        {
-            var films = new List<Film>();
-
-            try
-            {
-                films = Collection.Find(film => film.AbonneVisonnes.Contains(abonne)).ToList();
-                return new ReadOnlyCollection<Film>(films);
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Impossible d'obtenir la collection des films visionnés" + ex.Message, "Erreur");
-            }
-
-            return null;
-        }
+        
     }
 }

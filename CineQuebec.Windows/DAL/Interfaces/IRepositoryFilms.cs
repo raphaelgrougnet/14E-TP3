@@ -9,5 +9,4 @@ public interface IRepositoryFilms
     public Film AddFilm(Film film);
     public ReadOnlyCollection<Film> LoadFilmsAffiche();
     public Film UpdateFilm(Film film);
-    ReadOnlyCollection<Film> LoadFilmsVisionnes(Abonne abonne);
 }

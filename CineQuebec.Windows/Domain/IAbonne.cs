@@ -11,6 +11,7 @@
         byte[] Salt { get; set; }
         string Username { get; set; }
         Preference Preferences { get; set; }
+        List<Film> FilmsVisionnes { get; set; }
 
         void AjouterActeur(Acteur acteur);
 

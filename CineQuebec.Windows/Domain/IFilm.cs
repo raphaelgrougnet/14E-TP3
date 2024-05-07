@@ -11,6 +11,5 @@
         public List<Acteur> Acteurs { get; init; }
         public List<Realisateur> Realisateurs { get; init; }
         public List<Directeur> Directeurs { get; init; }
-        public List<Abonne> AbonneVisonnes { get; init; }
     }
 }

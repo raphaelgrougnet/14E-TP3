@@ -25,6 +25,7 @@ namespace CineQuebec.Windows.View
         public AbonneHomeControl(Abonne abonne)
         {
             InitializeComponent();
+            _abonne = abonne;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace CineQuebec.Windows.View
         {
             try
             {
-                ((MainWindow)Application.Current.MainWindow).AbonneFilmsVisionnesControl();
+                ((MainWindow)Application.Current.MainWindow).AbonneFilmsVisionnesControl(_abonne);
             }
             catch (Exception ex)
             {

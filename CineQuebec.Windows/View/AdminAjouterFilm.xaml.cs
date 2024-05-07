@@ -86,8 +86,7 @@ namespace CineQuebec.Windows.View
                     contenuChamps.categorie,
                     contenuChamps.acteurs,
                     contenuChamps.realisateur,
-                    contenuChamps.directeur,
-                    new List<Abonne>());
+                    contenuChamps.directeur);
 
                     _repositoryFilms.AddFilm(film);
 

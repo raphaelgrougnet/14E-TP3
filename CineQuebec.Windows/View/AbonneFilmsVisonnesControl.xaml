@@ -29,7 +29,7 @@
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button Content="Noter le film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="0 0 10 0" IsEnabled="False"/>
-            <Button Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35"/>
+            <Button Name="btnRetour" Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Click="BtnRetour_OnClick"/>
         </StackPanel>
 
     </Grid>
