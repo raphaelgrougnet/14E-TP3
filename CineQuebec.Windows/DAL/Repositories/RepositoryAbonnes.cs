@@ -74,5 +74,7 @@ namespace CineQuebec.Windows.DAL.Repositories
             }
             return false;
         }
+
+        
     }
 }
