@@ -31,6 +31,26 @@ namespace CineQuebec.Windows.Domain
         {
         }
 
+        public void AjouterActeur(Acteur acteur)
+        {
+            Preferences.Acteurs.Add(acteur);
+        }
+
+        public void AjouterCategorie(EnumCategorie categorie)
+        {
+            Preferences.Categories.Add(categorie);
+        }
+
+        public void AjouterDirecteur(Directeur directeur)
+        {
+            Preferences.Directeurs.Add(directeur);
+        }
+
+        public void AjouterRealisateur(Realisateur realisateur)
+        {
+            Preferences.Realisateurs.Add(realisateur);
+        }
+
         public override string ToString()
         {
             return Prenom + " " + Nom + " - " + Username;

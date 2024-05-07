@@ -29,5 +29,6 @@ namespace CineQuebec.Windows.Domain
             Directeurs = new List<Directeur>();
             Categories = new List<EnumCategorie>();
         }
+
     }
 }

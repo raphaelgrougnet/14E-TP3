@@ -11,7 +11,15 @@
         byte[] Salt { get; set; }
         string Username { get; set; }
         Preference Preferences { get; set; }
-        
+
+        void AjouterActeur(Acteur acteur);
+
+        void AjouterCategorie(EnumCategorie categorie);
+
+        void AjouterDirecteur(Directeur directeur);
+
+        void AjouterRealisateur(Realisateur realisateur);
+
 
         string ToString();
     }
