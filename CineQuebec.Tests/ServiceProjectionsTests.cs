@@ -15,9 +15,9 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25); 
-        var projection = new Projection(ObjectId.GenerateNewId(), salle, DateTime.Now, new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>()));
+        var projection = new Projection(ObjectId.GenerateNewId(), salle, DateTime.Now, new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>()));
         mockRepo.Setup(r => r.AddProjection(It.IsAny<Projection>())).Returns(projection);
         
         // Act
@@ -34,7 +34,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25);
         mockRepo.Setup(r => r.AddProjection(It.IsAny<Projection>())).Returns((Projection)null);
 
@@ -51,7 +51,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25);
         mockRepo.Setup(r => r.AddProjection(It.IsAny<Projection>())).Throws(new Exception("Erreur lors de l'ajout de la projection"));
 
@@ -79,7 +79,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => service.ProgrammerReprojection(film, null));
@@ -92,7 +92,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25);
         var projection = new Projection(ObjectId.GenerateNewId(), salle, DateTime.Now, film);
         var projections = new ReadOnlyCollection<Projection>(new List<Projection>{projection});
@@ -155,7 +155,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25);
         var projection = new Projection(ObjectId.GenerateNewId(), salle, DateTime.Now, film);
         var projections = new ReadOnlyCollection<Projection>(new List<Projection>{projection});
@@ -174,9 +174,9 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var salle = new Salle(ObjectId.GenerateNewId(), "Salle", 25);
-        var otherFilm = new Film(ObjectId.GenerateNewId(), "Autre Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var otherFilm = new Film(ObjectId.GenerateNewId(), "Autre Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         var projection = new Projection(ObjectId.GenerateNewId(), salle, DateTime.Now, otherFilm);
         var projections = new ReadOnlyCollection<Projection>(new List<Projection>{projection});
         mockRepo.Setup(r => r.LoadProjections()).Returns(projections);
@@ -194,7 +194,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         mockRepo.Setup(r => r.LoadProjections()).Returns(new ReadOnlyCollection<Projection>(new List<Projection>()));
 
         // Act
@@ -210,7 +210,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         mockRepo.Setup(r => r.LoadProjections()).Returns((ReadOnlyCollection<Projection>)null);
 
         // Act
@@ -226,7 +226,7 @@ public class ServiceProjectionsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryProjections>();
         var service = new ServiceProjections(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        var film = new Film(ObjectId.GenerateNewId(), "Titre", 120, DateTime.Now, EnumCategorie.Comedie, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         mockRepo.Setup(r => r.LoadProjections()).Throws(new Exception("Erreur lors du chargement des projections"));
 
         // Act & Assert

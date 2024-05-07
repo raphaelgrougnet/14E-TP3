@@ -14,7 +14,7 @@ public class ServiceFilmsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryFilms>();
         var service = new ServiceFilms(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>() );
+        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>());
         mockRepo.Setup(r => r.UpdateFilm(film)).Returns(film);
         
         // Act
@@ -31,7 +31,7 @@ public class ServiceFilmsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryFilms>();
         var service = new ServiceFilms(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>() );
+        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>() );
         mockRepo.Setup(r => r.UpdateFilm(film)).Returns(film);
     
         // Act
@@ -48,7 +48,7 @@ public class ServiceFilmsTests
         // Arrange
         var mockRepo = new Mock<IRepositoryFilms>();
         var service = new ServiceFilms(mockRepo.Object);
-        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>() );
+        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>(), new List<Abonne>() );
         mockRepo.Setup(r => r.UpdateFilm(film)).Throws(new Exception("Erreur de mise à jour du film"));
     
         // Act & Assert

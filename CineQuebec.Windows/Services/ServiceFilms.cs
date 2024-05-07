@@ -35,4 +35,9 @@ public class ServiceFilms : IServiceFilms
     {
         return _repositoryFilms.UpdateFilm(pFilm);
     }
+
+    public ReadOnlyCollection<Film> GetFilmsVisionnes(Abonne abonne)
+    {
+        return _repositoryFilms.LoadFilmsVisionnes(abonne);
+    }
 }

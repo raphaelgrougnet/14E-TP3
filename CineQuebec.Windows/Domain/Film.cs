@@ -19,9 +19,10 @@ namespace CineQuebec.Windows.Domain
         public List<Acteur> Acteurs { get; init; }
         public List<Realisateur> Realisateurs { get; init; }
         public List<Directeur> Directeurs { get; init; }
+        public List<Abonne> AbonneVisonnes { get; init; }
 
         public Film(ObjectId id, string titre, float duree, DateTime dateSortie,
-            EnumCategorie categorie, List<Acteur> acteurs, List<Realisateur> realisateurs, List<Directeur> directeurs) : base(id)
+            EnumCategorie categorie, List<Acteur> acteurs, List<Realisateur> realisateurs, List<Directeur> directeurs, List<Abonne> abonneVisonnes) : base(id)
         {
             Titre = titre;
             Duree = duree;
@@ -30,6 +31,7 @@ namespace CineQuebec.Windows.Domain
             Acteurs = acteurs;
             Realisateurs = realisateurs;
             Directeurs = directeurs;
+            AbonneVisonnes = abonneVisonnes;
         }
 
         public override string ToString()
