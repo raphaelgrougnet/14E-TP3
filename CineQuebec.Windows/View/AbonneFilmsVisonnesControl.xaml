@@ -12,7 +12,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="200" Margin="0 15 0 0">
-            <ListBox Name="lstFilms" Background="Gray">
+            <ListBox Name="lstFilms" Background="Gray" SelectionChanged="LstFilms_OnSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Titre}"/>
@@ -28,8 +28,19 @@
             </ListBox>
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Content="Noter le film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="0 0 10 0" IsEnabled="False"/>
-            <Button Name="btnRetour" Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Click="BtnRetour_OnClick"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="0 0 10 0" VerticalAlignment="Center" Padding="5">
+                <StackPanel Name="allStars" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False" >
+                    <Image Name="star1" Source="/assets/etoileVide.png" Width="30" MouseDown="Star1_OnMouseDown"></Image>
+                    <Image Name="star2" Source="/assets/etoileVide.png" Width="30" MouseDown="Star2_OnMouseDown"></Image>
+                    <Image Name="star3" Source="/assets/etoileVide.png" Width="30" MouseDown="Star3_OnMouseDown"></Image>
+                    <Image Name="star4" Source="/assets/etoileVide.png" Width="30" MouseDown="Star4_OnMouseDown"></Image>
+                    <Image Name="star5" Source="/assets/etoileVide.png" Width="30" MouseDown="Star5_OnMouseDown"></Image>
+
+                </StackPanel>
+            </Border>
+            
+            <Button Name="btnRetour" Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="40" Click="BtnRetour_OnClick"/>
+            
         </StackPanel>
 
     </Grid>
