@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,5 @@ namespace CineQuebec.Windows.Domain
             Directeurs = new List<Directeur>();
             Categories = new List<EnumCategorie>();
         }
-
     }
 }

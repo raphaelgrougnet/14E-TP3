@@ -5,10 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -18,9 +17,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Ajouter une préférence" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25"/>
-
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
             <Label Content="Genre" HorizontalAlignment="Center"/>
             <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="175" Height="240">
                 <ListBox Name="lstCategories" Background="Gray" d:ItemsSource="{d:SampleData ItemCount=5}">
@@ -39,7 +36,7 @@
                 </ListBox>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
             <Label Content="Acteur" HorizontalAlignment="Center"/>
             <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="175" Height="240">
                 <ListBox Name="lstActeurs" Background="Gray" d:ItemsSource="{d:SampleData ItemCount=5}">
@@ -58,7 +55,7 @@
                 </ListBox>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">
             <Label Content="Réalisateur" HorizontalAlignment="Center"/>
             <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="175" Height="240">
                 <ListBox Name="lstRealisateurs" Background="Gray" d:ItemsSource="{d:SampleData ItemCount=5}">
@@ -77,7 +74,7 @@
                 </ListBox>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center">
             <Label Content="Directeurs" HorizontalAlignment="Center"/>
             <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="175" Height="240">
                 <ListBox Name="lstDirecteurs" Background="Gray" d:ItemsSource="{d:SampleData ItemCount=5}">
