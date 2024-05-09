@@ -21,6 +21,11 @@ namespace CineQuebec.Windows
             mainContentControl.Content = new AdminHomeControl();
         }
 
+        public void AdminHomeRecompenser()
+        {
+            mainContentControl.Content = new AdminHomeRecompenser();
+        }
+
         public void AdminUsersControl()
         {
             mainContentControl.Content = new AdminAbonnesControl();
