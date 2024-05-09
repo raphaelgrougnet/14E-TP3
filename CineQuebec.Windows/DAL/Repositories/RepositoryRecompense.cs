@@ -14,8 +14,16 @@ namespace CineQuebec.Windows.DAL.Repositories
         {
             try
             {
-                Collection.InsertOne(recompense);
-                return true;
+                if (recompense.DecrementerNombreRestant())
+                {
+                    Collection.InsertOne(recompense);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Impossible d'ajouter la récompense, le nombre de récompenses restantes est de 0", "Erreur");
+                }
+                    
             }
             catch (Exception ex)
             {

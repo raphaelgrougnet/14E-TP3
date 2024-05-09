@@ -12,7 +12,10 @@ namespace CineQuebec.Windows.Domain
         public string Titre { get; init; }
         public EnumType Type { get; init; }
         public string Description { get; init; }
+        public uint NombreRestant { get; set; }
         public ObjectId idAbonne { get; init; }
+
+        public bool DecrementerNombreRestant();
 
     }
 }
