@@ -9,10 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\etoilePleine.png" />
+    <None Remove="assets\etoileVide.png" />
     <None Remove="Ressources\Images\logoCinema.png" />
     <None Remove="Ressources\Images\logoCinemaWithoutText.png" />
     <None Remove="Ressources\images\projections.png" />
     <None Remove="Ressources\images\users.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\etoilePleine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\etoileVide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

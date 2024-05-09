@@ -16,5 +16,6 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" Grid.Row="0" Content="Mes Préférences" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100" Click="Button_Click"/>
+        <Button Name="btnFilmsVisionnes" Grid.Column="1" Grid.Row="0" Content="Films visionnés" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100" Click="BtnFilmsVisionnes_OnClick"/>
     </Grid>
 </UserControl>

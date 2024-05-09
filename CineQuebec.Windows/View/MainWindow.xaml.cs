@@ -1,6 +1,7 @@
 ﻿using CineQuebec.Windows.Domain;
 using CineQuebec.Windows.View;
 using System.Windows;
+using CineQuebec.Windows.Domain;
 
 namespace CineQuebec.Windows
 {
@@ -33,6 +34,11 @@ namespace CineQuebec.Windows
         public void AdminAjouterFilm()
         {
             mainContentControl.Content = new AdminAjouterFilm();
+        }
+        
+        public void AbonneFilmsVisionnesControl(Abonne abonne)
+        {
+            mainContentControl.Content = new AbonneFilmsVisonnesControl(abonne);
         }
 
         public void AbonneHomeControl(Abonne abonne)
