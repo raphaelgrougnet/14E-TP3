@@ -31,6 +31,11 @@ namespace CineQuebec.Windows.Domain
             Realisateurs = realisateurs;
             Directeurs = directeurs;
         }
+        
+        public Film() : base(ObjectId.GenerateNewId())
+        {
+            
+        }
 
         public override string ToString()
         {

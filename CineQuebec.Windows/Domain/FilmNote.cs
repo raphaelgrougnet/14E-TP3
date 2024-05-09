@@ -10,6 +10,10 @@ public class FilmNote : Entite, IFilmNote
         Note = note;
         Abonne = abonne;
     }
+    
+    public FilmNote() : base(ObjectId.GenerateNewId())
+    {
+    }
 
     public Film Film { get; set; }
     public byte Note { get; set; }
