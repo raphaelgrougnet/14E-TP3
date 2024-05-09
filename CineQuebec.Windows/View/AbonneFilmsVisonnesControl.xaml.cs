@@ -13,8 +13,6 @@ public partial class AbonneFilmsVisonnesControl : UserControl
 {
     private RepositoryFilmNotes _repositoryFilmNotes;
     private ServiceFilmNotes _serviceFilmNotes;
-    private RepositoryFilms _repositoryFilms;
-    private ServiceFilms _serviceFilms;
     private Abonne _abonne;
     private ReadOnlyCollection<Film> _filmsVisionnes;
     
@@ -23,8 +21,6 @@ public partial class AbonneFilmsVisonnesControl : UserControl
         InitializeComponent();
         _repositoryFilmNotes = new RepositoryFilmNotes();
         _serviceFilmNotes = new ServiceFilmNotes(_repositoryFilmNotes);
-        _repositoryFilms = new RepositoryFilms();
-        _serviceFilms = new ServiceFilms(_repositoryFilms);
         _abonne = pAbonne;
         ChargerListeFilmsVisionnes();
     }
@@ -46,33 +42,76 @@ public partial class AbonneFilmsVisonnesControl : UserControl
         if (lstFilms.SelectedItem != null)
             allStars.IsEnabled = true;
         else
+        {
             allStars.IsEnabled = false;
+            return;
+        }
+            
+        
+        Film film = (Film)lstFilms.SelectedItem;
+        FilmNote? filmNote = _serviceFilmNotes.ObtenirFilmNoteParAbonneEtFilm(_abonne, film);
+        if (filmNote != null)
+        {
+            switch (filmNote.Note)
+            {
+                case 1:
+                    Star1Selected();
+                    break;
+                case 2:
+                    Star2Selected();
+                    break;
+                case 3:
+                    Star3Selected();
+                    break;
+                case 4:
+                    Star4Selected();
+                    break;
+                case 5:
+                    Star5Selected();
+                    break;
+            }
+        }
+        else
+        {
+            DeselectAllStars();
+        }
         
     }
     
     private void Star1_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         Star1Selected();
+        SaveNote(1);
     }
 
     private void Star2_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         Star2Selected();
+        SaveNote(2);
     }
 
     private void Star3_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         Star3Selected();
+        SaveNote(3);
     }
 
     private void Star4_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         Star4Selected();
+        SaveNote(4);
     }
 
     private void Star5_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         Star5Selected();
+        SaveNote(5);
+    }
+    
+    private void SaveNote(byte note)
+    {
+        Film film = (Film)lstFilms.SelectedItem;
+        _serviceFilmNotes.AddFilmNote(film, note, _abonne);
     }
 
     private void DeselectAllStars()
@@ -88,7 +127,6 @@ public partial class AbonneFilmsVisonnesControl : UserControl
     {
         DeselectAllStars();
         star1.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
-
     }
     
     private void Star2Selected()
@@ -96,7 +134,6 @@ public partial class AbonneFilmsVisonnesControl : UserControl
         DeselectAllStars();
         star1.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
         star2.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
-
     }
     
     private void Star3Selected()
@@ -105,7 +142,6 @@ public partial class AbonneFilmsVisonnesControl : UserControl
         star1.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
         star2.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
         star3.Source = new BitmapImage(new Uri("pack://application:,,,/CineQuebec.Windows;component/assets/etoilePleine.png"));
-
     }
     
     private void Star4Selected()

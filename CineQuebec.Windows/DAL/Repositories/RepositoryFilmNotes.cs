@@ -34,4 +34,29 @@ public class RepositoryFilmNotes : GenericRepository<FilmNote>, IRepositoryFilmN
         }
         
     }
+
+    public FilmNote? ObtenirFilmNoteParAbonneEtFilm(Abonne pAbonne, Film pFilm)
+    {
+        try
+        {
+            return Collection.Find(x => x.Abonne._id == pAbonne._id && x.Film._id == pFilm._id).FirstOrDefault();
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Impossible d'obtenir la note du film", e);
+        }
+    }
+
+    public FilmNote UpdateFilmNote(FilmNote filmNote)
+    {
+        try
+        {
+            Collection.ReplaceOne(x => x._id == filmNote._id, filmNote);
+            return filmNote;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Impossible de mettre à jour la note du film", e);
+        }
+    }
 }

@@ -46,11 +46,7 @@ namespace CineQuebec.Windows.View
         {
             ((MainWindow)Application.Current.MainWindow).AbonneAjouterPreference(_abonne);
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
