@@ -15,7 +15,7 @@
         </Style>
         <Style TargetType="ListBoxItem">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="#eee8f6"/>
         </Style>
         <Style TargetType="ListBox">

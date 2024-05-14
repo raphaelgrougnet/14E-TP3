@@ -54,6 +54,7 @@ namespace CineQuebec.Windows.View
             _serviceRealisateur = new ServiceRealisateur(_repositoryRealisateur);
             _repositoryDirecteur = new RepositoryDirecteur();
             _serviceDirecteur = new ServiceDirecteur(_repositoryDirecteur);
+            _servicePreferences = new ServicePreferences();
             AfficherLesListes();
         }
 
@@ -192,5 +193,12 @@ namespace CineQuebec.Windows.View
             
         }
 
+        private void btnDeselectionner_Click(object sender, RoutedEventArgs e)
+        {
+            lstActeurs.SelectedItem = null;
+            lstRealisateurs.SelectedItem = null;
+            lstDirecteurs.SelectedItem = null;
+            lstCategories.SelectedItem = null;
+        }
     }
 }
