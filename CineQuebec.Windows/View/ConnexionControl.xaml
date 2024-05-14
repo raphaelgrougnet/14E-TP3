@@ -39,7 +39,13 @@
             <TextBox Width="200" Height="30" Margin="0 0 0 20" Name="txtPassword"/>
 
             <Button Content="{x:Static rs:Resource.connexion_connect}" 
-                    Width="175" Height="35" Click="Button_Click" />
+                    Width="175" Height="35" Click="Button_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

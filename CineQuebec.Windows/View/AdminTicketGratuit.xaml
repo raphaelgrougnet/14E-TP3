@@ -34,7 +34,7 @@
             <Setter Property="Foreground" Value="#eee8f6"/>
         </Style>
     </UserControl.Resources>
-    <Grid Background="#eee8f6">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
@@ -60,8 +60,20 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="btnDonnerTicket" Content="Donner un ticket" Width="200" Height="30" Margin="0,0,25,0" Click="btnDonnerTicket_Click"/>
-            <Button Name="btnRetour" Content="Retour" Width="200" Height="30" Click="btnRetour_Click"/>
+            <Button Name="btnDonnerTicket" Content="Donner un ticket" Width="200" Height="30" Margin="0,0,25,0" Click="btnDonnerTicket_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnRetour" Content="Retour" Width="200" Height="30" Click="btnRetour_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
