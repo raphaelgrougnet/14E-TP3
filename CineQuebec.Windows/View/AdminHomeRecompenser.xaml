@@ -5,8 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White" Height="275" Width="450">
+             d:DesignHeight="275" d:DesignWidth="450">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Height="275" Width="450">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -21,8 +58,7 @@
                 <Image Height="100"
                     Source="/Ressources/Images/categories-icon-ticket.png" />
                 <Label HorizontalAlignment="Center"
-                    Content="Ticket Gratuit" 
-                    Style="{StaticResource defautLabel}" />
+                    Content="Ticket Gratuit" />
             </StackPanel>
         </Button>
         <Button x:Name="btnInvitation" Style="{StaticResource defautButton}" 
@@ -31,14 +67,15 @@
                 <Image Height="100"
                     Source="/Ressources/Images/projection-ticket.png" />
                 <Label HorizontalAlignment="Center"
-                    Content="Invitation Avant-Première" 
-                    Style="{StaticResource defautLabel}" />
+                    Content="Invitation Avant-Première" />
             </StackPanel>
         </Button>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2">
-            <Border Name="btnRetour" Width="115" Height="40" Margin="5,5,5,5" BorderBrush="Black" Background="#FFA7A7A7"  BorderThickness="2" CornerRadius="10" MouseUp="btnRetour_MouseUp">
-                <Label Content="Retourner" FontSize="20"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            </Border>
-        </StackPanel>
+        <Button x:Name="btnRetour" Content="Retour" Width="100" Height="35" Grid.Row="1" Grid.ColumnSpan="2" Click="btnRetour_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </UserControl>
