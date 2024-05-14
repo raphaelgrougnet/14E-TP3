@@ -5,50 +5,65 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+             d:DesignHeight="300" d:DesignWidth="1000">
+    <Grid Background="White" Width="1000" Height="300">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+
         </Grid.RowDefinitions>
-        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="700" Height="260">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Label Content="Titre:" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox Name="txtTitre" VerticalAlignment="Center" Width="80" FontSize="15"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
-                        <Label Content="Durée:" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox Name="txtDuree" VerticalAlignment="Center" Width="80"  FontSize="15" KeyDown="txtDuree_KeyDown"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,5,5,5">
-                        <Label Content="Date de sortie:" VerticalAlignment="Center" FontSize="15"/>
-                        <DatePicker Name="dpDateSortie" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Label Content="Catégorie:" VerticalAlignment="Center" FontSize="15"/>
-                        <ComboBox Name="cbCategorie" Width="100"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
-                        <Label Content="Acteur:" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox Name="txtActeurs" VerticalAlignment="Center" Width="300"  FontSize="15"/>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Label Content="Réalisateur:" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox Name="txtRealisateur" VerticalAlignment="Center" Width="300"  FontSize="15"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
-                        <Label Content="Directeur:" VerticalAlignment="Center" FontSize="15"/>
-                        <TextBox Name="txtDirecteur" VerticalAlignment="Center" Width="200"  FontSize="15"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" Click="btnAjouter_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5" >
+                <Label Content="Titre:" VerticalAlignment="Center" FontSize="15"/>
+                <TextBox Name="txtTitre" VerticalAlignment="Center" Width="200" FontSize="15"/>
             </StackPanel>
-        </Border>
+            <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
+                <Label Content="Durée:" VerticalAlignment="Center" FontSize="15"/>
+                <TextBox Name="txtDuree" VerticalAlignment="Center" Width="80"  FontSize="15" KeyDown="txtDuree_KeyDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,5,5,5">
+                <Label Content="Date de sortie:" VerticalAlignment="Center" FontSize="15"/>
+                <DatePicker Name="dpDateSortie" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5" Grid.Row="1">
+                <Label Content="Catégorie:" VerticalAlignment="Center" FontSize="15"/>
+                <ComboBox Name="cbCategorie" Width="100" Height="30"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal"   Margin="5,5,5,5" Grid.Row="2">
+                <Label Content="Acteur:" VerticalAlignment="Center" FontSize="15"/>
+                <ListBox Name="lstActeurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                <Label Content="Réalisateur:" VerticalAlignment="Center" FontSize="15"/>
+                <ListBox Name="lstRealisateurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
+                <Label Content="Directeur:" VerticalAlignment="Center" FontSize="15"/>
+                <ListBox Name="lstDirecteurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </StackPanel>
+        <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" Grid.Row="2" Click="btnAjouter_Click"/>
     </Grid>
 </UserControl>
