@@ -29,10 +29,6 @@
             <Setter Property="Foreground" Value="#3d52a1"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
-        <Style TargetType="ComboBoxItem">
-            <Setter Property="Background" Value="#7191e6"/>
-            <Setter Property="Foreground" Value="#eee8f6"/>
-        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
