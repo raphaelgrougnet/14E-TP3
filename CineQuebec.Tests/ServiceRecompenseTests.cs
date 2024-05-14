@@ -15,8 +15,9 @@ namespace CineQuebec.Tests
             // Arrange
             var mockRepository = new Mock<IRepositoryRecompense>();
             var serviceRecompense = new ServiceRecompense(mockRepository.Object);
-            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
-            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", 30 ,id);
+            var idAbonne = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
+            var idFilm = new ObjectId("6643a5df30157264d54cbf81");
+            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", idAbonne, idFilm);
 
             mockRepository.Setup(x => x.AddRecompenseToAbonne(recompense)).Returns(true);
 
@@ -33,8 +34,9 @@ namespace CineQuebec.Tests
             // Arrange
             var mockRepository = new Mock<IRepositoryRecompense>();
             var serviceRecompense = new ServiceRecompense(mockRepository.Object);
-            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
-            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", 30, id);
+            var idAbonne = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
+            var idFilm = new ObjectId("6643a5df30157264d54cbf81");
+            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", idAbonne, idFilm);
 
             mockRepository.Setup(x => x.AddRecompenseToAbonne(recompense)).Returns(false);
 
@@ -51,8 +53,9 @@ namespace CineQuebec.Tests
             // Arrange
             var mockRepository = new Mock<IRepositoryRecompense>();
             var serviceRecompense = new ServiceRecompense(mockRepository.Object);
-            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
-            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", 30, id);
+            var idAbonne = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
+            var idFilm = new ObjectId("6643a5df30157264d54cbf81");
+            var recompense = new Recompense(ObjectId.GenerateNewId(), "Test", EnumType.TicketGratuit, "Merci de votre participation", idAbonne, idFilm);
 
             mockRepository.Setup(x => x.AddRecompenseToAbonne(recompense)).Throws<Exception>();
 
@@ -60,34 +63,6 @@ namespace CineQuebec.Tests
             Assert.Throws<Exception>(() => serviceRecompense.AddRecompenseToAbonne(recompense));
         }
 
-        [Fact]
-        public void TestDecrementerNombreRestant_WithPositiveNumber()
-        {
-            // Arrange
-            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
-            var recompense = new Recompense("Test", EnumType.TicketGratuit, "Test Description", 5, id);
-
-            // Act
-            var result = recompense.DecrementerNombreRestant();
-
-            // Assert
-            Assert.True(result);
-            Assert.Equal((uint)4, recompense.NombreRestant);
-        }
-
-        [Fact]
-        public void TestDecrementerNombreRestant_WithZero()
-        {
-            // Arrange
-            var id = new ObjectId("5f8f4b3b7b3e6f0b7c7b3e6f");
-            var recompense = new Recompense("Test", EnumType.TicketGratuit, "Test Description", 0, id);
-
-            // Act
-            var result = recompense.DecrementerNombreRestant();
-
-            // Assert
-            Assert.False(result);
-            Assert.Equal((uint)0, recompense.NombreRestant);
-        }
+        
     }
 }

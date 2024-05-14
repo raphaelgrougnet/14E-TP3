@@ -60,5 +60,10 @@ namespace CineQuebec.Windows
         {
             mainContentControl.Content = new AbonneAjouterPreference(abonne);
         }
+
+        public void AdminTicketGratuit()
+        {
+            mainContentControl.Content = new AdminTicketGratuit();
+        }
     }
 }

@@ -150,5 +150,10 @@ namespace CineQuebec.Windows.View
                 e.Handled = true;
             }
         }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).AdminHomeFilm();
+        }
     }
 }

@@ -12,36 +12,27 @@ namespace CineQuebec.Windows.Domain
         public string Titre { get; init; }
         public EnumType Type { get; init; }
         public string Description { get; init; }
-        public uint NombreRestant { get; set; } = 30;
         public ObjectId idAbonne { get; init; }
+        public ObjectId idFilm { get; init; }
 
-        public Recompense(ObjectId id,string titre, EnumType type, string description, uint nombreRestant, ObjectId idAbonne) : base(id)
+        public Recompense(ObjectId id, string titre, EnumType type, string description, ObjectId idAbonne, ObjectId idFilm) : base(id)
         {
             Titre = titre;
             Type = type;
             Description = description;
-            NombreRestant = nombreRestant;
             this.idAbonne = idAbonne;
+            this.idFilm = idFilm;
         }
 
-        public Recompense(string titre, EnumType type, string description, uint nombreRestant, ObjectId idAbonne) : base(ObjectId.GenerateNewId())
+        public Recompense(string titre, EnumType type, string description, ObjectId idAbonne, ObjectId idFilm) : base(ObjectId.GenerateNewId())
         {
             Titre = titre;
             Type = type;
             Description = description;
-            NombreRestant = nombreRestant;
             this.idAbonne = idAbonne;
+            this.idFilm = idFilm;
         }
 
-        public bool DecrementerNombreRestant()
-        {
-            if (NombreRestant > 0)
-            {
-                NombreRestant--;
-                return true;
-            }
-            return false;
-        }
 
         public override string ToString()
         {

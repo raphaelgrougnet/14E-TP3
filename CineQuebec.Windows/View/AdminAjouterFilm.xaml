@@ -64,6 +64,9 @@
                 </ListBox>
             </StackPanel>
         </StackPanel>
-        <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" Grid.Row="2" Click="btnAjouter_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" Margin="5,5,5,5" Click="btnAjouter_Click"/>
+            <Button Name="btnRetour" Content="Retour" Width="100" Height="30" Click="btnRetour_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>

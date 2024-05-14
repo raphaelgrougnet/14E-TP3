@@ -27,20 +27,33 @@ namespace CineQuebec.Windows.View
     {
         private Abonne _abonne;
 
-        private RepositoryAbonnes _repositoryAbonnes = new RepositoryAbonnes();
+        private RepositoryAbonnes _repositoryAbonnes;
+        private ServiceAbonnes _serviceAbonnes;
 
-        private RepositoryActeur _repositoryActeur = new RepositoryActeur();
+        private RepositoryActeur _repositoryActeur;
+        private ServiceActeur _serviceActeur;
 
-        private RepositoryRealisateur _repositoryRealisateur = new RepositoryRealisateur();
+        private RepositoryRealisateur _repositoryRealisateur;
+        private ServiceRealisateur _serviceRealisateur;
 
-        private RepositoryDirecteur _repositoryDirecteur = new RepositoryDirecteur();
+        private RepositoryDirecteur _repositoryDirecteur;
+        private ServiceDirecteur _serviceDirecteur;
 
-        private ServicePreferences _servicePreferences = new ServicePreferences();
+        private ServicePreferences _servicePreferences;
+
 
         public AbonneAjouterPreference(Abonne abonne)
         {
             InitializeComponent();
             _abonne = abonne;
+            _repositoryAbonnes = new RepositoryAbonnes();
+            _serviceAbonnes = new ServiceAbonnes(_repositoryAbonnes);
+            _repositoryActeur = new RepositoryActeur();
+            _serviceActeur = new ServiceActeur(_repositoryActeur);
+            _repositoryRealisateur = new RepositoryRealisateur();
+            _serviceRealisateur = new ServiceRealisateur(_repositoryRealisateur);
+            _repositoryDirecteur = new RepositoryDirecteur();
+            _serviceDirecteur = new ServiceDirecteur(_repositoryDirecteur);
             AfficherLesListes();
         }
 
@@ -51,9 +64,9 @@ namespace CineQuebec.Windows.View
             lstDirecteurs.Items.Clear();
             lstCategories.Items.Clear();
 
-            ReadOnlyCollection<Acteur> acteurs = _repositoryActeur.LoadActeurs();
-            ReadOnlyCollection<Realisateur> realisateurs = _repositoryRealisateur.LoadRealisateurs();
-            ReadOnlyCollection<Directeur> directeurs = _repositoryDirecteur.LoadDirecteurs();
+            ReadOnlyCollection<Acteur> acteurs = _serviceActeur.LoadActeurs();
+            ReadOnlyCollection<Realisateur> realisateurs = _serviceRealisateur.LoadRealisateurs();
+            ReadOnlyCollection<Directeur> directeurs = _serviceDirecteur.LoadDirecteurs();
 
             lstActeurs.ItemsSource = acteurs;
             lstRealisateurs.ItemsSource = realisateurs;
@@ -171,7 +184,7 @@ namespace CineQuebec.Windows.View
 
                 if (abonneAjouteNouvellePreference)
                 {
-                    _repositoryAbonnes.UpdateAbonne(_abonne._id, _abonne.Preferences);
+                    _serviceAbonnes.UpdateAbonne(_abonne._id, _abonne.Preferences);
                     MessageBox.Show("Préférence ajoutée avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                     ((MainWindow)Application.Current.MainWindow).AbonneMesPreferences(_abonne);
                 }

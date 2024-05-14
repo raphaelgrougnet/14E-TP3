@@ -37,6 +37,7 @@ namespace CineQuebec.Windows.View
 
         private void btnRecompense_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)Application.Current.MainWindow).AdminTicketGratuit();
 
         }
     }
