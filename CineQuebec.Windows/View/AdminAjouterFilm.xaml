@@ -101,8 +101,20 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" Margin="5,5,5,5" Click="btnAjouter_Click"/>
-            <Button Name="btnRetour" Content="Retour" Width="100" Height="30" Click="btnRetour_Click"/>
+            <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" Margin="5,5,20,5" Click="btnAjouter_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnRetour" Content="Retour" Width="100" Height="30" Click="btnRetour_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
