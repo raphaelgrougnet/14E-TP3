@@ -14,13 +14,13 @@
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
         </Grid.RowDefinitions>
         <Image Grid.Row="0"
                HorizontalAlignment="Center" 
                Margin="10,10,10,10" 
                VerticalAlignment="Center"
-               Source="/Ressources/images/logoCinema.png"/>
+               Source="/Ressources/images/logoCinema.png" Width="300"/>
         <ContentControl x:Name="mainContentControl" 
                         Grid.Row="1" 
                         HorizontalAlignment="Center" 

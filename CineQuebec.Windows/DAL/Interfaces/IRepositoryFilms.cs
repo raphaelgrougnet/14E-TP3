@@ -10,4 +10,5 @@ public interface IRepositoryFilms
     public ReadOnlyCollection<Film> LoadFilmsAffiche();
     public Film UpdateFilm(Film film);
     public ReadOnlyCollection<Film> LoadAllAvantPremiereFilm();
+    public bool DeleteFilm(Film film);
 }

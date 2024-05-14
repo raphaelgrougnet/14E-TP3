@@ -6,32 +6,69 @@
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="#eee8f6">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="240">
-            <ListBox Name="lstFilms" Background="Gray" SelectionChanged="LstFilms_OnSelectionChanged">
+        <Border BorderBrush="White" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="240">
+            <ListBox Name="lstFilms" BorderBrush="#3d52a1" Background="#7191e6" SelectionChanged="LstFilms_OnSelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Titre}"/>
+                        <TextBlock Text="{Binding}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="24"/>
-                        <Setter Property="Foreground" Value="Black"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
             </ListBox>
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Content="Ajouter un film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="Button_Click_1"/>
-            <Button x:Name="btnTri" Content="Afficher liste des films à l'affiche" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="Button_Click_2"/>
-            <Button x:Name="btnReprojection" Content="Reprojeter le film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="ReprojeterFilm"/>
-            <Button Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Click="Button_Click"/>
+            <Button x:Name="btnAjouterFilm" Content="Ajouter un film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Height="35" Margin="5,5,5,5" Click="btnAjouterFilm_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnTri" Content="Afficher liste des films à l'affiche" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" Height="35" Margin="5,5,5,5" Click="Button_Click_2">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnReprojection" Content="Reprojeter le film" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="35" Margin="5,5,5,5" Click="ReprojeterFilm">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnRetour" Content="Retour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="35" Click="btnRetour_Click" Margin="5,5,5,5">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnDelete" Content="Supprimer" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="35" Margin="5,5,5,5" Click="btnDelete_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
         
     </Grid>

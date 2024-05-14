@@ -11,5 +11,5 @@ public interface IServiceFilms
     public ReadOnlyCollection<Film> LoadFilmsAffiche();
     public Film UpdateFilm(Film pFilm);
     public ReadOnlyCollection<Film> LoadAllAvantPremiereFilm();
-
+    public bool DeleteFilm(Film pFilm);
 }
