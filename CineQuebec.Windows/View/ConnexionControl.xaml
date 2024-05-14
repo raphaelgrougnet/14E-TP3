@@ -24,7 +24,7 @@
             <Setter Property="Background" Value="#7191e6"/>
             <Setter Property="BorderBrush" Value="#3d52a1"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
     </UserControl.Resources>
