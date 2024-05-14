@@ -10,4 +10,6 @@ public interface IServiceFilms
     public Film AddFilm(Film pFilm);
     public ReadOnlyCollection<Film> LoadFilmsAffiche();
     public Film UpdateFilm(Film pFilm);
+    public ReadOnlyCollection<Film> LoadAllAvantPremiereFilm();
+
 }

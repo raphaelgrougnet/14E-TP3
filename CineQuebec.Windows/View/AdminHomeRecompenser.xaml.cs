@@ -32,7 +32,7 @@ namespace CineQuebec.Windows.View
 
         private void btnInvitation_Click(object sender, RoutedEventArgs e)
         {
-
+            ((MainWindow)Application.Current.MainWindow).AdminTicketAvantPremiere();
         }
 
         private void btnRecompense_Click(object sender, RoutedEventArgs e)

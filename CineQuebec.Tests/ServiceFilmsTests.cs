@@ -116,4 +116,28 @@ public class ServiceFilmsTests
         var ex = Assert.Throws<Exception>(() => service.UpdateFilm(film));
         Assert.Equal("Erreur de mise à jour du film", ex.Message);
     }
+
+    [Fact]
+    public void LoadAllAvantPremiereFilmShouldReturnAllAvantPremiereFilms()
+    {
+        // Arrange
+        var mockRepo = new Mock<IRepositoryFilms>();
+        var service = new ServiceFilms(mockRepo.Object);
+        var films = new ReadOnlyCollection<Film>(new List<Film>
+        {
+            new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>()),
+            new Film(ObjectId.GenerateNewId(), "Film2", 90f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>())
+        });
+        foreach (Film film in films)
+        {
+            film.EstAvantPremiere = true;
+        }
+        mockRepo.Setup(r => r.LoadAllAvantPremiereFilm()).Returns(films);
+
+        // Act
+        var result = service.LoadAllAvantPremiereFilm();
+
+        // Assert
+        Assert.Equal(films, result);
+    }
 }

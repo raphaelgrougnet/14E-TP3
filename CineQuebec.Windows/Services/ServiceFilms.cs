@@ -35,4 +35,8 @@ public class ServiceFilms : IServiceFilms
     {
         return _repositoryFilms.UpdateFilm(pFilm);
     }
+    public ReadOnlyCollection<Film> LoadAllAvantPremiereFilm()
+    {
+        return _repositoryFilms.LoadAllAvantPremiereFilm();
+    }
 }
