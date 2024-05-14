@@ -21,6 +21,11 @@ namespace CineQuebec.Windows
             mainContentControl.Content = new AdminHomeControl();
         }
 
+        public void AdminHomeRecompenser()
+        {
+            mainContentControl.Content = new AdminHomeRecompenser();
+        }
+
         public void AdminUsersControl()
         {
             mainContentControl.Content = new AdminAbonnesControl();
@@ -54,6 +59,16 @@ namespace CineQuebec.Windows
         public void AbonneAjouterPreference(Abonne abonne)
         {
             mainContentControl.Content = new AbonneAjouterPreference(abonne);
+        }
+
+        public void AdminTicketGratuit()
+        {
+            mainContentControl.Content = new AdminTicketGratuit();
+        }
+
+        public void AdminTicketAvantPremiere()
+        {
+            mainContentControl.Content = new AdminTicketAvantPremiere();
         }
     }
 }

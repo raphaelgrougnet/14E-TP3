@@ -11,8 +11,11 @@
   <ItemGroup>
     <None Remove="assets\etoilePleine.png" />
     <None Remove="assets\etoileVide.png" />
+    <None Remove="Ressources\images\categories-icon-ticket.png" />
+    <None Remove="Ressources\images\gift-icon.png" />
     <None Remove="Ressources\Images\logoCinema.png" />
     <None Remove="Ressources\Images\logoCinemaWithoutText.png" />
+    <None Remove="Ressources\images\projection-ticket.png" />
     <None Remove="Ressources\images\projections.png" />
     <None Remove="Ressources\images\users.png" />
   </ItemGroup>
@@ -32,8 +35,17 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Ressources\images\categories-icon-ticket.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Ressources\images\gift-icon.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Ressources\Images\logoCinema.png" />
 		<Resource Include="Ressources\Images\logoCinemaWithoutText.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Ressources\images\projection-ticket.png">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Ressources\images\projections.png">

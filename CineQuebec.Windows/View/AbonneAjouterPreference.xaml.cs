@@ -1,5 +1,6 @@
 ﻿using CineQuebec.Windows.DAL.Repositories;
 using CineQuebec.Windows.Domain;
+using CineQuebec.Windows.Services;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -26,18 +27,33 @@ namespace CineQuebec.Windows.View
     {
         private Abonne _abonne;
 
-        private RepositoryAbonnes _repositoryAbonnes = new RepositoryAbonnes();
+        private RepositoryAbonnes _repositoryAbonnes;
+        private ServiceAbonnes _serviceAbonnes;
 
-        private RepositoryActeur _repositoryActeur = new RepositoryActeur();
+        private RepositoryActeur _repositoryActeur;
+        private ServiceActeur _serviceActeur;
 
-        private RepositoryRealisateur _repositoryRealisateur = new RepositoryRealisateur();
+        private RepositoryRealisateur _repositoryRealisateur;
+        private ServiceRealisateur _serviceRealisateur;
 
-        private RepositoryDirecteur _repositoryDirecteur = new RepositoryDirecteur();
+        private RepositoryDirecteur _repositoryDirecteur;
+        private ServiceDirecteur _serviceDirecteur;
+
+        private ServicePreferences _servicePreferences;
+
 
         public AbonneAjouterPreference(Abonne abonne)
         {
             InitializeComponent();
             _abonne = abonne;
+            _repositoryAbonnes = new RepositoryAbonnes();
+            _serviceAbonnes = new ServiceAbonnes(_repositoryAbonnes);
+            _repositoryActeur = new RepositoryActeur();
+            _serviceActeur = new ServiceActeur(_repositoryActeur);
+            _repositoryRealisateur = new RepositoryRealisateur();
+            _serviceRealisateur = new ServiceRealisateur(_repositoryRealisateur);
+            _repositoryDirecteur = new RepositoryDirecteur();
+            _serviceDirecteur = new ServiceDirecteur(_repositoryDirecteur);
             AfficherLesListes();
         }
 
@@ -48,15 +64,36 @@ namespace CineQuebec.Windows.View
             lstDirecteurs.Items.Clear();
             lstCategories.Items.Clear();
 
-            ReadOnlyCollection<Acteur> acteurs = _repositoryActeur.LoadActeurs();
-            ReadOnlyCollection<Realisateur> realisateurs = _repositoryRealisateur.LoadRealisateurs();
-            ReadOnlyCollection<Directeur> directeurs = _repositoryDirecteur.LoadDirecteurs();
+            ReadOnlyCollection<Acteur> acteurs = _serviceActeur.LoadActeurs();
+            ReadOnlyCollection<Realisateur> realisateurs = _serviceRealisateur.LoadRealisateurs();
+            ReadOnlyCollection<Directeur> directeurs = _serviceDirecteur.LoadDirecteurs();
 
             lstActeurs.ItemsSource = acteurs;
             lstRealisateurs.ItemsSource = realisateurs;
             lstDirecteurs.ItemsSource = directeurs;
             lstCategories.ItemsSource = Enum.GetValues(typeof(EnumCategorie));
         }
+
+        private bool AtLeastOneListIsSelected()
+        {
+            if(lstActeurs.SelectedItem == null && lstRealisateurs.SelectedItem == null && lstDirecteurs.SelectedItem == null && lstCategories.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner au moins un élément.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void AfficherMessageErreurIsAlreadyInList(string type)
+        {
+            MessageBox.Show(type + " est déjà dans la liste des préférences.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void AfficherMessageErreurMaxPreferencesReached()
+        {
+            MessageBox.Show("Vous avez atteint le nombre maximum de préférences.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
@@ -66,41 +103,93 @@ namespace CineQuebec.Windows.View
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             bool abonneAjouteNouvellePreference = false;
-            if(lstActeurs.SelectedItem != null)
+            if(AtLeastOneListIsSelected())
             {
-                Acteur acteur = (Acteur)lstActeurs.SelectedItem;
-                _abonne.AjouterActeur(acteur);
-                abonneAjouteNouvellePreference = true;
-            }
-            if (lstRealisateurs.SelectedItem != null)
-            {
-                Realisateur realisateur = (Realisateur)lstRealisateurs.SelectedItem;
-                _abonne.AjouterRealisateur(realisateur);
-                abonneAjouteNouvellePreference = true;
-            }
-            if (lstDirecteurs.SelectedItem != null)
-            {
-                Directeur directeur = (Directeur)lstDirecteurs.SelectedItem;
-                _abonne.AjouterDirecteur(directeur);
-                abonneAjouteNouvellePreference = true;
-            }
-            if (lstCategories.SelectedItem != null)
-            {
-                EnumCategorie categorie = (EnumCategorie)lstCategories.SelectedItem;
-                _abonne.AjouterCategorie(categorie);
-                abonneAjouteNouvellePreference = true;
-            }
+                if (lstActeurs.SelectedItem != null)
+                {
+                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Acteurs.Count))
+                    {
+                        Acteur acteur = (Acteur)lstActeurs.SelectedItem;
+                        if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Acteurs, acteur) == false)
+                        {
+                            _abonne.AjouterActeur(acteur);
+                            abonneAjouteNouvellePreference = true;
+                        }
+                        else
+                        {
+                            AfficherMessageErreurIsAlreadyInList("Cet acteur");
+                        }
+                    }
+                }
+                if (lstRealisateurs.SelectedItem != null)
+                {
+                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Realisateurs.Count))
+                    {
+                        Realisateur realisateur = (Realisateur)lstRealisateurs.SelectedItem;
+                        if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Realisateurs, realisateur) == false)
+                        {
+                            _abonne.AjouterRealisateur(realisateur);
+                            abonneAjouteNouvellePreference = true;
+                        }
+                        else
+                        {
+                            AfficherMessageErreurIsAlreadyInList("Ce réalisateur");
+                        }
+                    }
+                    else
+                    {
+                        AfficherMessageErreurMaxPreferencesReached();
+                    }                   
+                }
+                if (lstDirecteurs.SelectedItem != null)
+                {
+                    if (_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Directeurs.Count))
+                    {
+                        Directeur directeur = (Directeur)lstDirecteurs.SelectedItem;
+                        if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Directeurs, directeur) == false)
+                        {
+                            _abonne.AjouterDirecteur(directeur);
+                            abonneAjouteNouvellePreference = true;
+                        }
+                        else
+                        {
+                            AfficherMessageErreurIsAlreadyInList("Ce directeur");
+                        }
+                    }
+                    else
+                    {
+                        AfficherMessageErreurMaxPreferencesReached();
+                    }                  
+                }
+                if (lstCategories.SelectedItem != null)
+                {
+                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Categories.Count))
+                    {
+                        EnumCategorie categorie = (EnumCategorie)lstCategories.SelectedItem;
+                        if (_servicePreferences.CategorieIsInList(_abonne.Preferences.Categories, categorie) == false)
+                        {
+                            _abonne.AjouterCategorie(categorie);
+                            abonneAjouteNouvellePreference = true;
+                        }
+                        else
+                        {
+                            AfficherMessageErreurIsAlreadyInList("Cette catégorie");
+                        }
+                    }
+                    else
+                    {
+                        AfficherMessageErreurMaxPreferencesReached();
+                    }
+                }
 
-            if(abonneAjouteNouvellePreference)
-            {
-                _repositoryAbonnes.UpdateAbonne(_abonne._id, _abonne.Preferences);
-                MessageBox.Show("Préférence ajoutée avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                ((MainWindow)Application.Current.MainWindow).AbonneMesPreferences(_abonne);
+                if (abonneAjouteNouvellePreference)
+                {
+                    _serviceAbonnes.UpdateAbonne(_abonne._id, _abonne.Preferences);
+                    MessageBox.Show("Préférence ajoutée avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ((MainWindow)Application.Current.MainWindow).AbonneMesPreferences(_abonne);
+                }
             }
-            else
-            {
-                MessageBox.Show("Veuillez sélectionner une préférence à ajouter.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
         }
 
     }

@@ -68,6 +68,22 @@ namespace CineQuebec.Windows.DAL.Repositories
 
             return null;
         }
-        
+
+        public ReadOnlyCollection<Film> LoadAllAvantPremiereFilm()
+        {
+            var films = new List<Film>();
+
+            try
+            {
+                films = Collection.Find(filmsAvantPremiere => filmsAvantPremiere.EstAvantPremiere == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Impossible d'obtenir la collections des films à l'affiche" + ex.Message, "Erreur");
+            }
+            return new ReadOnlyCollection<Film>(films);
+        }
+
+
     }
 }

@@ -3,6 +3,7 @@ using CineQuebec.Windows.Domain;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,48 +26,63 @@ namespace CineQuebec.Windows.View
     {
         private RepositoryFilms _repositoryFilms = new RepositoryFilms();
 
+        private RepositoryAbonnes _repositoryAbonnes = new RepositoryAbonnes();
+
+        private RepositoryActeur _repositoryActeur = new RepositoryActeur();
+
+        private RepositoryRealisateur _repositoryRealisateur = new RepositoryRealisateur();
+
+        private RepositoryDirecteur _repositoryDirecteur = new RepositoryDirecteur();
+
         public AdminAjouterFilm()
         {
             InitializeComponent();
             cbCategorie.ItemsSource = Enum.GetValues(typeof(EnumCategorie));
+            AfficherLesListes();
         }
 
-        //private (string titre, string duree, DatePicker dateSortie, EnumCategorie categorie, 
-        //    string acteurs, string realisateur, string directeur) GetContenuChamps()
-        //{        
-        //    return (txtTitre.Text.Trim(), txtDuree.Text.Trim(), dpDateSortie, (EnumCategorie)cbCategorie.SelectedItem, 
-        //        txtActeurs.Text.Trim(), txtRealisateur.Text.Trim(), txtDirecteur.Text.Trim());
-        //}
+        private void AfficherLesListes()
+        {
+            lstActeurs.Items.Clear();
+            lstRealisateurs.Items.Clear();
+            lstDirecteurs.Items.Clear();
+
+            ReadOnlyCollection<Acteur> acteurs = _repositoryActeur.LoadActeurs();
+            ReadOnlyCollection<Realisateur> realisateurs = _repositoryRealisateur.LoadRealisateurs();
+            ReadOnlyCollection<Directeur> directeurs = _repositoryDirecteur.LoadDirecteurs();
+
+            lstActeurs.ItemsSource = acteurs;
+            lstRealisateurs.ItemsSource = realisateurs;
+            lstDirecteurs.ItemsSource = directeurs;
+        }
 
         private (string titre, string duree, DatePicker dateSortie, EnumCategorie categorie,
          List<Acteur> acteurs, List<Realisateur> realisateur, List<Directeur> directeur) GetContenuChamps()
         {
-            string acteurs = txtActeurs.Text.Trim();
-            string realisateur = txtRealisateur.Text.Trim();
-            string directeur = txtDirecteur.Text.Trim();
-
-            // Split the comma-separated strings into arrays
-            string[] acteursArray = acteurs.Split(',');
-            string[] realisateurArray = realisateur.Split(',');
-            string[] directeurArray = directeur.Split(',');
+            var selectedActeurs = lstActeurs.SelectedItems;
+            var selectedRealisateurs = lstRealisateurs.SelectedItems;
+            var selectedDirecteurs = lstDirecteurs.SelectedItems;
+            
 
             List<Acteur> acteursList = new List<Acteur>();
             List<Realisateur> realisateurList = new List<Realisateur>();
             List<Directeur> directeurList = new List<Directeur>();
-            
-            // Add each item in the arrays to the corresponding list
-            foreach (string item in acteursArray)
+
+            foreach (var item in selectedActeurs)
             {
-                acteursList.Add(new Acteur(item));
+                acteursList.Add((Acteur)item);
             }
-            foreach (string item in realisateurArray)
+
+            foreach (var item in selectedRealisateurs)
             {
-                realisateurList.Add(new Realisateur(item));
-            }   
-            foreach (string item in directeurArray)
-            {
-                directeurList.Add(new Directeur(item));
+                realisateurList.Add((Realisateur)item);
             }
+
+            foreach (var item in selectedDirecteurs)
+            {
+                directeurList.Add((Directeur)item);
+            }
+
 
             return (txtTitre.Text.Trim(), txtDuree.Text.Trim(), dpDateSortie, (EnumCategorie)cbCategorie.SelectedItem, acteursList, realisateurList, directeurList);
         }
@@ -133,6 +149,11 @@ namespace CineQuebec.Windows.View
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).AdminHomeFilm();
         }
     }
 }

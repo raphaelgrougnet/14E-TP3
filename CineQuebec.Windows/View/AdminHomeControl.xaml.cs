@@ -36,5 +36,17 @@ namespace CineQuebec.Windows.View
                 MessageBox.Show("Une erreur est survenue lors de l'ouverture de la page Abonnés" + ex.Message, "Erreur");
             }
         }
+
+        private void btnRecompense_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ((MainWindow)Application.Current.MainWindow).AdminHomeRecompenser();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue lors de l'ouverture de la page Récompense" + ex.Message, "Erreur");
+            }
+        }
     }
 }

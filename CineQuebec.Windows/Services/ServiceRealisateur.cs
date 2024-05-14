@@ -14,6 +14,11 @@ namespace CineQuebec.Windows.Services
     {
         private IRepositoryRealisateur _repositoryRealisateur;
 
+        public ServiceRealisateur(IRepositoryRealisateur repositoryRealisateur)
+        {
+            _repositoryRealisateur = repositoryRealisateur;
+        }
+
         public ReadOnlyCollection<Realisateur> LoadRealisateurs()
         {
             return _repositoryRealisateur.LoadRealisateurs();

@@ -83,6 +83,8 @@ public partial class AdminReprojeterFilm : Window
             
             _serviceProjections.ProgrammerReprojection(_film, _salleSelectionnee);
             _film.EstALaffiche = true;
+            if(chkAvantPremiere.IsChecked == true) 
+                _film.EstAvantPremiere = true;
             _serviceFilms.UpdateFilm(_film);
             MessageBox.Show("Le film a été reprojeté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();

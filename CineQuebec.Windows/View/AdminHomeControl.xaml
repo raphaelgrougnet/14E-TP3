@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              xmlns:rs="clr-namespace:CineQuebec.Windows.Ressources.i18n">
 
-    <Grid Background="White" Height="250" Width="300">
+    <Grid Background="White" Height="250" Width="450">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
@@ -32,6 +33,17 @@
                 <Label HorizontalAlignment="Center"
                        Content="{x:Static rs:Resource.admin_films}" 
             Style="{StaticResource defautLabel}" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnRecompense" Style="{StaticResource defautButton}" 
+        Grid.Column="2" Click="btnRecompense_Click">
+            <StackPanel>
+                <Image Height="100"
+                Source="/Ressources/Images/gift-icon.png" />
+                <Label HorizontalAlignment="Center"
+                    Content="Récompenser" 
+                    Style="{StaticResource defautLabel}" />
             </StackPanel>
         </Button>
 
