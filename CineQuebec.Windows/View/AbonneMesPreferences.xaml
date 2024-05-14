@@ -36,13 +36,8 @@
             <Setter Property="Foreground" Value="#eee8f6"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
-        <Style TargetType="DatePicker">
-            <Setter Property="Background" Value="#7191e6"/>
-            <Setter Property="BorderBrush" Value="#3d52a1"/>
-            <Setter Property="Foreground" Value="#3d52a1"/>
-        </Style>
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
