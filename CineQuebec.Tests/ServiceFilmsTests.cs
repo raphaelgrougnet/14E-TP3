@@ -140,4 +140,21 @@ public class ServiceFilmsTests
         // Assert
         Assert.Equal(films, result);
     }
+
+    [Fact]
+    public void DeleteFilmShouldDeleteInRepo()
+    {
+        // Arrange
+        var mockRepo = new Mock<IRepositoryFilms>();
+        var service = new ServiceFilms(mockRepo.Object);
+        var film = new Film(ObjectId.GenerateNewId(), "Film1", 120f, DateTime.Now, EnumCategorie.Action, new List<Acteur>(), new List<Realisateur>(), new List<Directeur>());
+        mockRepo.Setup(r => r.DeleteFilm(film)).Returns(film);
+        
+        // Act
+        var result = service.DeleteFilm(film);
+        
+        // Assert
+        mockRepo.Verify(r => r.DeleteFilm(film), Times.Once);
+    }
+
 }

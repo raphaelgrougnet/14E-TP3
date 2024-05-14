@@ -39,4 +39,8 @@ public class ServiceFilms : IServiceFilms
     {
         return _repositoryFilms.LoadAllAvantPremiereFilm();
     }
+    public bool DeleteFilm(Film pFilm)
+    {
+        return _repositoryFilms.DeleteFilm(pFilm);
+    }
 }

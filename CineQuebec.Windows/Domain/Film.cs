@@ -40,7 +40,7 @@ namespace CineQuebec.Windows.Domain
 
         public override string ToString()
         {
-            return Titre;
+            return $"{Titre} - {DateSortie.Year}";
         }
     }
 }

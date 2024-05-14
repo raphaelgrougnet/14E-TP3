@@ -41,17 +41,6 @@ namespace CineQuebec.Windows.View
             btnReprojection.IsEnabled = false;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Une erreur est survenue lors du retour vers la page Film" + ex.Message, "Erreur");
-            }
-        }
 
         private void AfficherListeFilms()
         {
@@ -105,17 +94,6 @@ namespace CineQuebec.Windows.View
             _estAffiche = !_estAffiche;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ((MainWindow)Application.Current.MainWindow).AdminAjouterFilm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Une erreur est survenue lors de l'ouverture de la page Formulaire d'Ajout" + ex.Message, "Erreur");
-            }
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -136,6 +114,47 @@ namespace CineQuebec.Windows.View
                 btnReprojection.IsEnabled = true;
             else
                 btnReprojection.IsEnabled = false;
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue lors du retour vers la page Film" + ex.Message, "Erreur");
+            }
+        }
+
+        private void btnAjouterFilm_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ((MainWindow)Application.Current.MainWindow).AdminAjouterFilm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenue lors de l'ouverture de la page Formulaire d'Ajout" + ex.Message, "Erreur");
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if(lstFilms.SelectedItem != null)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Etes-vous sûr de vouloir supprimer le film ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    _serviceFilms.DeleteFilm((Film)lstFilms.SelectedItem);
+                    AfficherListeFilms();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un film.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

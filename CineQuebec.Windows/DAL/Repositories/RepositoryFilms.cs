@@ -84,6 +84,20 @@ namespace CineQuebec.Windows.DAL.Repositories
             return new ReadOnlyCollection<Film>(films);
         }
 
+        public bool DeleteFilm(Film film)
+        {
+            try
+            {
+                var filter = Builders<Film>.Filter.Eq("_id", film._id);
+                Collection.DeleteOne(filter);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Impossible de supprimer le film " + ex.Message, "Erreur");
+            }
 
+            return false;
+        }
     }
 }
