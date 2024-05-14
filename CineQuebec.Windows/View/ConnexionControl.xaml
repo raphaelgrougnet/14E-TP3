@@ -5,22 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              xmlns:rs="clr-namespace:CineQuebec.Windows.Ressources.i18n">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#eee8f6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid Background="White" >
 
         <StackPanel VerticalAlignment="Center" >
-            <Label Content="{x:Static rs:Resource.connexion_username}" 
-                   Style="{StaticResource defautLabel}" />
-            <TextBox Width="200"  Style="{StaticResource defautInput}"
-                     Margin="0 0 0 10" Name="txtUsername"/>
+            <Label Content="{x:Static rs:Resource.connexion_username}"/>
+            <TextBox Width="200" Height="30" Margin="0 0 0 10" Name="txtUsername"/>
 
-            <Label Content="{x:Static rs:Resource.connexion_password}" 
-                   Style="{StaticResource defautLabel}" />
-            <TextBox Width="200" 
-                     Style="{StaticResource defautInput}"
-                     Margin="0 0 0 20" Name="txtPassword"/>
+            <Label Content="{x:Static rs:Resource.connexion_password}"/>
+            <TextBox Width="200" Height="30" Margin="0 0 0 20" Name="txtPassword"/>
 
             <Button Content="{x:Static rs:Resource.connexion_connect}" 
-                    Style="{StaticResource defautButton}" Width="100" Click="Button_Click" />
+                    Width="175" Height="35" Click="Button_Click" />
         </StackPanel>
     </Grid>
 </UserControl>
