@@ -37,7 +37,7 @@
         </Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2">
             <Border Name="btnRetour" Width="115" Height="40" Margin="5,5,5,5" BorderBrush="Black" Background="#FFA7A7A7"  BorderThickness="2" CornerRadius="10" MouseUp="btnRetour_MouseUp">
-                <Label Content="Retoutner" FontSize="20"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="Retourner" FontSize="20"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             </Border>
         </StackPanel>
     </Grid>
