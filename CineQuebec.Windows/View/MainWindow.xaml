@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         Height="600" Width="1000"
          Icon="/Ressources/images/logoCinemaWithoutText.png">
-    <Grid>
+    <Grid Background="#eee8f6">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
