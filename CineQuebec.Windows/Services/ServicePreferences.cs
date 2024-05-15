@@ -10,7 +10,6 @@ namespace CineQuebec.Windows.Services
 {
     public class ServicePreferences : IServicePreferences
     {
-        public const int MAX_PREFERENCES = 5;
 
         public bool IsAlreadyInList<T>(List<T> list, T item) where T : Entite
         {
@@ -36,9 +35,17 @@ namespace CineQuebec.Windows.Services
             return false;
         }
 
-        public bool IsMaxPreferencesReached(int lenght)
+        public bool IsMaxPreferencesReached(int lenght, int max)
         {
-            if(lenght <= MAX_PREFERENCES)
+            if(lenght < max)
+                return true;
+            else
+                return false;
+        }
+
+        public bool IsMaxCategoriePreferencesReached(int lenght, int max)
+        {
+            if (lenght < max)
                 return true;
             else
                 return false;

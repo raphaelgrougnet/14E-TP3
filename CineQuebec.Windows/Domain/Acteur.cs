@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CineQuebec.Windows.Domain
 {
@@ -19,6 +20,17 @@ namespace CineQuebec.Windows.Domain
         public Acteur(string nom) : base(ObjectId.GenerateNewId())
         {
             Nom = nom;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            var other = (Acteur)obj;
+            return Nom == other.Nom;
         }
 
         public override string ToString()

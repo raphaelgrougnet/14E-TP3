@@ -74,6 +74,13 @@ namespace CineQuebec.Windows.View
             lstAbonnes.ItemsSource = abonnesAvecPreferences;
         }
 
+        private void DeselectionnerTout()
+        {
+            lstAbonnes.SelectedItem = null;
+            cbFilm.SelectedItem = null;
+            lstAbonnes.ItemsSource = null;
+        }
+
         private void btnDonnerTicket_Click(object sender, RoutedEventArgs e)
         {
             if (lstAbonnes.SelectedItem != null && cbFilm.SelectedItem != null)
@@ -82,7 +89,7 @@ namespace CineQuebec.Windows.View
                 Film film = cbFilm.SelectedItem as Film;
                 Recompense recompense = new Recompense($"Ticket Avant-Première pour {film.Titre}", EnumType.Invitation, "Merci de votre fidélité", abonne._id, film._id);
                 _serviceRecompense.AddRecompenseToAbonne(recompense);
-
+                DeselectionnerTout();
                 MessageBox.Show("Le ticket a été donné à l'abonné", "Ticket donné", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

@@ -62,6 +62,12 @@ namespace CineQuebec.Windows.View
             var films = _serviceFilms.GetFilms();
             cbFilm.ItemsSource = films;
         }
+        private void DeselectionnerTout()
+        {
+            lstAbonnes.SelectedItem = null;
+            cbFilm.SelectedItem = null;
+            lstAbonnes.ItemsSource = null;
+        }
 
         private void AfficherListeAbonnes(EnumCategorie categorie)
         {
@@ -99,7 +105,7 @@ namespace CineQuebec.Windows.View
                 Film film = cbFilm.SelectedItem as Film;
                 Recompense recompense = new Recompense($"Ticket Gratuit pour {film.Titre}", EnumType.TicketGratuit, "Merci de votre fidélité", abonne._id, film._id);
                 _serviceRecompense.AddRecompenseToAbonne(recompense);
-                
+                DeselectionnerTout();
                 MessageBox.Show("Le ticket a été donné à l'abonné", "Ticket donné", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

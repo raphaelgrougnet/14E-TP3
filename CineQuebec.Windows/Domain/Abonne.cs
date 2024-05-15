@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using System.Xml.Linq;
 
 namespace CineQuebec.Windows.Domain
 {
@@ -52,6 +53,8 @@ namespace CineQuebec.Windows.Domain
         {
             Preferences.Realisateurs.Add(realisateur);
         }
+
+       
 
         public override string ToString()
         {
