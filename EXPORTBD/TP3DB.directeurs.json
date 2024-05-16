@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "663a677bfa0d0fc4ea263bad"
+  },
+  "Nom": "Steven Spielberg"
+},
+{
+  "_id": {
+    "$oid": "663a6791fa0d0fc4ea263bae"
+  },
+  "Nom": "Martin Scorsese"
+},
+{
+  "_id": {
+    "$oid": "6643a9f8db96e2c9bd6bfb00"
+  },
+  "Nom": "Quentin Tarantino"
+},
+{
+  "_id": {
+    "$oid": "6643a9fddb96e2c9bd6bfb01"
+  },
+  "Nom": "Christopher Nolan"
+},
+{
+  "_id": {
+    "$oid": "6643aa01db96e2c9bd6bfb02"
+  },
+  "Nom": "Ridley Scott"
+},
+{
+  "_id": {
+    "$oid": "6643aa05db96e2c9bd6bfb03"
+  },
+  "Nom": "Kathryn Bigelow"
+},
+{
+  "_id": {
+    "$oid": "6643aa0adb96e2c9bd6bfb04"
+  },
+  "Nom": "Wes Anderson"
+}]

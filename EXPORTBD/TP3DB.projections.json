@@ -1,0 +1,160 @@
+[{
+  "_id": {
+    "$oid": "66369ad45f3a73bcc988fe71"
+  },
+  "Salle": {
+    "_id": {
+      "$oid": "66368d009153cfaac5198dce"
+    },
+    "Nom": "1",
+    "Capacite": 100
+  },
+  "Date": {
+    "$date": "2024-05-04T20:30:12.357Z"
+  },
+  "Film": {
+    "_id": {
+      "$oid": "66314190f73876d2515ec5f1"
+    },
+    "Titre": "Test11",
+    "Duree": 120,
+    "DateSortie": {
+      "$date": "2024-04-03T04:00:00.000Z"
+    },
+    "EstArchive": false,
+    "EstALaffiche": false,
+    "Categorie": 2,
+    "Acteurs": [
+      {
+        "Nom": "Test"
+      }
+    ],
+    "Realisateurs": [
+      {
+        "Nom": "Test"
+      }
+    ],
+    "Directeurs": [
+      {
+        "Nom": "Test"
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "66437e71f64bad55ffc130a5"
+  },
+  "Salle": {
+    "_id": {
+      "$oid": "66368d009153cfaac5198dce"
+    },
+    "Nom": "1",
+    "Capacite": 100
+  },
+  "Date": {
+    "$date": "2024-05-14T15:08:33.101Z"
+  },
+  "Film": {
+    "_id": {
+      "$oid": "663a7198ba47a090d57aef61"
+    },
+    "Titre": "Test",
+    "Duree": 120,
+    "DateSortie": {
+      "$date": "2024-05-06T04:00:00.000Z"
+    },
+    "EstArchive": false,
+    "EstALaffiche": false,
+    "Categorie": 1,
+    "Acteurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5b"
+        },
+        "Nom": ""
+      }
+    ],
+    "Realisateurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5c"
+        },
+        "Nom": ""
+      }
+    ],
+    "Directeurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5d"
+        },
+        "Nom": ""
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "66466f46d50bcc06c33e815f"
+  },
+  "Salle": {
+    "_id": {
+      "$oid": "66466d8285456002e7d7d2a1"
+    },
+    "Nom": "2",
+    "Capacite": 50
+  },
+  "Date": {
+    "$date": "2024-05-16T20:40:38.203Z"
+  },
+  "Film": {
+    "_id": {
+      "$oid": "6643950e8c7b3c5f356df013"
+    },
+    "Titre": "FNAF",
+    "Duree": 432,
+    "DateSortie": {
+      "$date": "2024-05-23T04:00:00.000Z"
+    },
+    "EstArchive": false,
+    "EstALaffiche": true,
+    "EstAvantPremiere": true,
+    "Categorie": 3,
+    "Acteurs": [
+      {
+        "_id": {
+          "$oid": "663a67a8fa0d0fc4ea263bb1"
+        },
+        "Nom": "Acteur2"
+      },
+      {
+        "_id": {
+          "$oid": "663a679cfa0d0fc4ea263bb0"
+        },
+        "Nom": "Acteur1"
+      }
+    ],
+    "Realisateurs": [
+      {
+        "_id": {
+          "$oid": "663a676ffa0d0fc4ea263baa"
+        },
+        "Nom": "Realisateur2"
+      }
+    ],
+    "Directeurs": [
+      {
+        "_id": {
+          "$oid": "663a6791fa0d0fc4ea263bae"
+        },
+        "Nom": "Directeur2"
+      },
+      {
+        "_id": {
+          "$oid": "663a677bfa0d0fc4ea263bad"
+        },
+        "Nom": "Directeur1"
+      }
+    ]
+  }
+}]

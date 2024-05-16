@@ -1,0 +1,180 @@
+[{
+  "_id": {
+    "$oid": "66466ff2e70744704234a876"
+  },
+  "Film": {
+    "_id": {
+      "$oid": "663a7198ba47a090d57aef61"
+    },
+    "Titre": "Avatar",
+    "Duree": 120,
+    "DateSortie": {
+      "$date": "2024-05-06T04:00:00.000Z"
+    },
+    "EstArchive": false,
+    "EstALaffiche": true,
+    "EstAvantPremiere": false,
+    "Categorie": 1,
+    "Acteurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5b"
+        },
+        "Nom": ""
+      }
+    ],
+    "Realisateurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5c"
+        },
+        "Nom": ""
+      }
+    ],
+    "Directeurs": [
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef5d"
+        },
+        "Nom": ""
+      }
+    ]
+  },
+  "Note": 5,
+  "Abonne": {
+    "_id": {
+      "$oid": "663a5e640fd429b5f3d8b358"
+    },
+    "Nom": "Paquet",
+    "Prenom": "Julien",
+    "Username": "julien",
+    "Courriel": "julien@gmail.com",
+    "MotDePasse": {
+      "$binary": {
+        "base64": "V3KB6/a5BfiWUjITUEYjKQ==",
+        "subType": "00"
+      }
+    },
+    "Salt": {
+      "$binary": {
+        "base64": "RSf+jg6Bexl5cSU5pYsMow==",
+        "subType": "00"
+      }
+    },
+    "EstAdmin": false,
+    "DateAdhesion": {
+      "$date": "2024-03-28T16:09:43.132Z"
+    },
+    "Preferences": {
+      "_id": {
+        "$oid": "663ce3bd7b7165a0edd2c0b7"
+      },
+      "Acteurs": [
+        {
+          "_id": {
+            "$oid": "663a67a8fa0d0fc4ea263bb1"
+          },
+          "Nom": "Acteur2"
+        }
+      ],
+      "Realisateurs": [
+        {
+          "_id": {
+            "$oid": "663a676ffa0d0fc4ea263baa"
+          },
+          "Nom": "Realisateur2"
+        }
+      ],
+      "Directeurs": [
+        {
+          "_id": {
+            "$oid": "663a6791fa0d0fc4ea263bae"
+          },
+          "Nom": "Directeur2"
+        }
+      ],
+      "Categories": [
+        1,
+        2
+      ]
+    },
+    "FilmsVisionnes": [
+      {
+        "_id": {
+          "$oid": "66437eb6f64bad55ffc130b9"
+        },
+        "Titre": "Godzilla vs Mothra",
+        "Duree": 120,
+        "DateSortie": {
+          "$date": "2024-05-13T04:00:00.000Z"
+        },
+        "EstArchive": false,
+        "EstALaffiche": false,
+        "EstAvantPremiere": false,
+        "Categorie": 2,
+        "Acteurs": [
+          {
+            "_id": {
+              "$oid": "66437eb6f64bad55ffc130b3"
+            },
+            "Nom": ""
+          }
+        ],
+        "Realisateurs": [
+          {
+            "_id": {
+              "$oid": "66437eb6f64bad55ffc130b4"
+            },
+            "Nom": ""
+          }
+        ],
+        "Directeurs": [
+          {
+            "_id": {
+              "$oid": "66437eb6f64bad55ffc130b5"
+            },
+            "Nom": ""
+          }
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "663a7198ba47a090d57aef61"
+        },
+        "Titre": "Avatar",
+        "Duree": 120,
+        "DateSortie": {
+          "$date": "2024-05-06T04:00:00.000Z"
+        },
+        "EstArchive": false,
+        "EstALaffiche": true,
+        "EstAvantPremiere": false,
+        "Categorie": 1,
+        "Acteurs": [
+          {
+            "_id": {
+              "$oid": "663a7198ba47a090d57aef5b"
+            },
+            "Nom": ""
+          }
+        ],
+        "Realisateurs": [
+          {
+            "_id": {
+              "$oid": "663a7198ba47a090d57aef5c"
+            },
+            "Nom": ""
+          }
+        ],
+        "Directeurs": [
+          {
+            "_id": {
+              "$oid": "663a7198ba47a090d57aef5d"
+            },
+            "Nom": ""
+          }
+        ]
+      }
+    ]
+  }
+}]

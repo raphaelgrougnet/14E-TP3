@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "663a679cfa0d0fc4ea263bb0"
+  },
+  "Nom": "Leonardo DiCaprio"
+},
+{
+  "_id": {
+    "$oid": "663a67a8fa0d0fc4ea263bb1"
+  },
+  "Nom": "Robert De Niro"
+},
+{
+  "_id": {
+    "$oid": "6643a9e4db96e2c9bd6bfafa"
+  },
+  "Nom": "Denzel Washington"
+},
+{
+  "_id": {
+    "$oid": "6643a9e8db96e2c9bd6bfafb"
+  },
+  "Nom": "Brad Pitt"
+},
+{
+  "_id": {
+    "$oid": "6643a9ecdb96e2c9bd6bfafc"
+  },
+  "Nom": "Tom Hanks"
+},
+{
+  "_id": {
+    "$oid": "6643a9f2db96e2c9bd6bfafd"
+  },
+  "Nom": "Johnny Depp"
+}]
