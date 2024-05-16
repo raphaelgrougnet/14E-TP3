@@ -30,8 +30,36 @@ namespace CineQuebec.Tests
             {
                 Assert.Equal(acteurs[i].Nom, result[i].Nom);
             }
+        }
 
-            
+        [Fact]
+        public void TestLoadActeurs_ThrowsException()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryActeur>();
+            var service = new ServiceActeur(mockRepo.Object);
+
+            mockRepo.Setup(r => r.LoadActeurs()).Throws(new Exception());
+
+            // Act & Assert
+            Assert.Throws<Exception>(() => service.LoadActeurs());
+        }
+
+        [Fact]
+        public void TestLoadActeurs_RepoReturnsEmptyList_ReturnsEmptyList()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryActeur>();
+            var service = new ServiceActeur(mockRepo.Object);
+
+            var acteurs = new ReadOnlyCollection<Acteur>(new List<Acteur>());
+            mockRepo.Setup(r => r.LoadActeurs()).Returns(acteurs);
+
+            // Act
+            var result = service.LoadActeurs();
+
+            // Assert
+            Assert.Empty(result);
         }
 
         [Fact]
@@ -56,6 +84,36 @@ namespace CineQuebec.Tests
         }
 
         [Fact]
+        public void TestLoadDirecteur_EmptyList()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryDirecteur>();
+            var service = new ServiceDirecteur(mockRepo.Object);
+
+            ReadOnlyCollection<Directeur> directeur = new ReadOnlyCollection<Directeur>(new List<Directeur>());
+            mockRepo.Setup(r => r.LoadDirecteurs()).Returns(directeur);
+
+            // Act
+            var result = service.LoadDirecteurs();
+
+            // Assert
+            Assert.Equal(0, result.Count);
+        }
+
+        [Fact]
+        public void TestLoadDirecteur_ThrowsException()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryDirecteur>();
+            var service = new ServiceDirecteur(mockRepo.Object);
+
+            mockRepo.Setup(r => r.LoadDirecteurs()).Throws(new Exception());
+
+            // Act & Assert
+            Assert.Throws<Exception>(() => service.LoadDirecteurs());
+        }
+
+        [Fact]
         public void TestLoadRealisateur_Success()
         {
             // Arrange
@@ -74,6 +132,36 @@ namespace CineQuebec.Tests
             {
                 Assert.Equal(realisateur[i].Nom, result[i].Nom);
             }
+        }
+
+        [Fact]
+        public void TestLoadRealisateur_ThrowsException()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryRealisateur>();
+            var service = new ServiceRealisateur(mockRepo.Object);
+
+            mockRepo.Setup(r => r.LoadRealisateurs()).Throws(new Exception());
+
+            // Act & Assert
+            Assert.Throws<Exception>(() => service.LoadRealisateurs());
+        }
+
+        [Fact]
+        public void TestLoadRealisateur_RepoReturnsEmptyList_ReturnsEmptyList()
+        {
+            // Arrange
+            var mockRepo = new Mock<IRepositoryRealisateur>();
+            var service = new ServiceRealisateur(mockRepo.Object);
+
+            var realisateur = new ReadOnlyCollection<Realisateur>(new List<Realisateur>());
+            mockRepo.Setup(r => r.LoadRealisateurs()).Returns(realisateur);
+
+            // Act
+            var result = service.LoadRealisateurs();
+
+            // Assert
+            Assert.Empty(result);
         }
     }
 }
