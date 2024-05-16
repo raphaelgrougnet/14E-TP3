@@ -32,6 +32,12 @@ namespace CineQuebec.Windows.Domain
             return Nom == other.Nom;
         }
 
+        public override int GetHashCode()
+        {
+            return Nom != null ? Nom.GetHashCode() : 0;
+        }
+
+
         public override string ToString()
         {
             return $"{Nom}";
