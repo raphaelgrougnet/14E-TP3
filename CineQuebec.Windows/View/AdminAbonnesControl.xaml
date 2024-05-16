@@ -6,34 +6,59 @@
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="500">
-    <Grid Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#eee8f6"/>
+                    <Setter Property="Foreground" Value="#3d52a1"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8697c4"/>
+                    <Setter Property="Foreground" Value="#3d52a1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="500" Height="200">
-            <ListBox Name="lstAbonnes" Background="#FFB1B1B1" SelectionChanged="lstAbonnes_SelectionChanged">
+        <Border BorderBrush="Azure" Grid.Row="0" HorizontalAlignment="Center" Width="400" Height="200">
+            <ListBox Name="lstAbonnes" SelectionChanged="lstAbonnes_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="24"/>
-                        <Setter Property="Foreground" Value="Black"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
 
             </ListBox>
         </Border>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" >
-            <Border Name="btnFermer" Width="115" Height="45" Margin="5,5,5,5" BorderBrush="Black" Background="#FFA7A7A7"  BorderThickness="2" CornerRadius="10" MouseUp="btnFermer_MouseUp">
-                <Label Content="Fermer" FontSize="24"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            </Border>
-        </StackPanel>
-        
+        <Button Name="btnRetour" Content="Retour" Width="200" Height="30" Grid.Row="1" Click="btnRetour_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </UserControl>

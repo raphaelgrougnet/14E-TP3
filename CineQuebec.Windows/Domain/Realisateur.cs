@@ -21,6 +21,22 @@ namespace CineQuebec.Windows.Domain
             Nom = nom;
         }
 
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            var other = (Realisateur)obj;
+            return Nom == other.Nom;
+        }
+
+        public override int GetHashCode()
+        {
+            return Nom != null ? Nom.GetHashCode() : 0;
+        }
+
         public override string ToString()
         {
             return $"{Nom}";

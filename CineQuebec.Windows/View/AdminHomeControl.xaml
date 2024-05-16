@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              xmlns:rs="clr-namespace:CineQuebec.Windows.Ressources.i18n">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
 
-    <Grid Background="White" Height="250" Width="450">
+    </UserControl.Resources>
+    <Grid Height="250" Width="450">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -20,8 +35,7 @@
                 <Image Height="100" 
                        Source="/Ressources/Images/users.png" />
                 <Label HorizontalAlignment="Center"
-                       Content="{x:Static rs:Resource.admin_users}" 
-                    Style="{StaticResource defautLabel}" />
+                       Content="{x:Static rs:Resource.admin_users}" />
             </StackPanel>
         </Button>
 
@@ -31,8 +45,7 @@
                 <Image Height="100"
                        Source="/Ressources/Images/projections.png" />
                 <Label HorizontalAlignment="Center"
-                       Content="{x:Static rs:Resource.admin_films}" 
-            Style="{StaticResource defautLabel}" />
+                       Content="{x:Static rs:Resource.admin_films}" />
             </StackPanel>
         </Button>
 
@@ -42,8 +55,7 @@
                 <Image Height="100"
                 Source="/Ressources/Images/gift-icon.png" />
                 <Label HorizontalAlignment="Center"
-                    Content="Récompenser" 
-                    Style="{StaticResource defautLabel}" />
+                    Content="Récompenser" />
             </StackPanel>
         </Button>
 

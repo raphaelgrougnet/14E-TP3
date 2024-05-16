@@ -25,6 +25,10 @@ namespace CineQuebec.Windows.View
     /// </summary>
     public partial class AbonneAjouterPreference : UserControl
     {
+        public const int MAX_PREFERENCES = 5;
+
+        public const int MAX_PREFERENCES_CATEGORIES = 3;
+
         private Abonne _abonne;
 
         private RepositoryAbonnes _repositoryAbonnes;
@@ -54,6 +58,7 @@ namespace CineQuebec.Windows.View
             _serviceRealisateur = new ServiceRealisateur(_repositoryRealisateur);
             _repositoryDirecteur = new RepositoryDirecteur();
             _serviceDirecteur = new ServiceDirecteur(_repositoryDirecteur);
+            _servicePreferences = new ServicePreferences();
             AfficherLesListes();
         }
 
@@ -91,13 +96,26 @@ namespace CineQuebec.Windows.View
 
         private void AfficherMessageErreurMaxPreferencesReached()
         {
-            MessageBox.Show("Vous avez atteint le nombre maximum de préférences.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"Vous avez atteint le nombre maximum de préférences ({MAX_PREFERENCES}).", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void AfficherMessageErreurMaxCategoriePreferencesReached()
+        {
+            MessageBox.Show($"Vous avez atteint le nombre maximum de catégories ({MAX_PREFERENCES_CATEGORIES}).", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).AbonneMesPreferences(_abonne);
+        }
+
+        private void DeselectionnerTout()
+        {
+            lstActeurs.SelectedItem = null;
+            lstRealisateurs.SelectedItem = null;
+            lstDirecteurs.SelectedItem = null;
+            lstCategories.SelectedItem = null;
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
@@ -107,7 +125,7 @@ namespace CineQuebec.Windows.View
             {
                 if (lstActeurs.SelectedItem != null)
                 {
-                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Acteurs.Count))
+                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Acteurs.Count, MAX_PREFERENCES))
                     {
                         Acteur acteur = (Acteur)lstActeurs.SelectedItem;
                         if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Acteurs, acteur) == false)
@@ -123,7 +141,7 @@ namespace CineQuebec.Windows.View
                 }
                 if (lstRealisateurs.SelectedItem != null)
                 {
-                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Realisateurs.Count))
+                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Realisateurs.Count, MAX_PREFERENCES))
                     {
                         Realisateur realisateur = (Realisateur)lstRealisateurs.SelectedItem;
                         if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Realisateurs, realisateur) == false)
@@ -143,7 +161,7 @@ namespace CineQuebec.Windows.View
                 }
                 if (lstDirecteurs.SelectedItem != null)
                 {
-                    if (_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Directeurs.Count))
+                    if (_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Directeurs.Count, MAX_PREFERENCES))
                     {
                         Directeur directeur = (Directeur)lstDirecteurs.SelectedItem;
                         if (_servicePreferences.IsAlreadyInList(_abonne.Preferences.Directeurs, directeur) == false)
@@ -163,7 +181,7 @@ namespace CineQuebec.Windows.View
                 }
                 if (lstCategories.SelectedItem != null)
                 {
-                    if(_servicePreferences.IsMaxPreferencesReached(_abonne.Preferences.Categories.Count))
+                    if(_servicePreferences.IsMaxCategoriePreferencesReached(_abonne.Preferences.Categories.Count, MAX_PREFERENCES_CATEGORIES))
                     {
                         EnumCategorie categorie = (EnumCategorie)lstCategories.SelectedItem;
                         if (_servicePreferences.CategorieIsInList(_abonne.Preferences.Categories, categorie) == false)
@@ -178,10 +196,10 @@ namespace CineQuebec.Windows.View
                     }
                     else
                     {
-                        AfficherMessageErreurMaxPreferencesReached();
+                        AfficherMessageErreurMaxCategoriePreferencesReached();
                     }
                 }
-
+                DeselectionnerTout();
                 if (abonneAjouteNouvellePreference)
                 {
                     _serviceAbonnes.UpdateAbonne(_abonne._id, _abonne.Preferences);
@@ -192,5 +210,9 @@ namespace CineQuebec.Windows.View
             
         }
 
+        private void btnDeselectionner_Click(object sender, RoutedEventArgs e)
+        {
+            DeselectionnerTout();
+        }
     }
 }

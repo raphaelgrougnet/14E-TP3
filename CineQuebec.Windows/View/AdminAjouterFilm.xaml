@@ -6,7 +6,43 @@
              xmlns:local="clr-namespace:CineQuebec.Windows.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="1000">
-    <Grid Background="White" Width="1000" Height="300">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7191e6" />
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#3d52a1"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#eee8f6"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Background" Value="#7191e6"/>
+            <Setter Property="BorderBrush" Value="#3d52a1"/>
+            <Setter Property="Foreground" Value="#3d52a1"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Width="1000" Height="300">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -35,7 +71,7 @@
 
             <StackPanel Orientation="Horizontal"   Margin="5,5,5,5" Grid.Row="2">
                 <Label Content="Acteur:" VerticalAlignment="Center" FontSize="15"/>
-                <ListBox Name="lstActeurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox Name="lstActeurs" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Nom}"/>
@@ -45,7 +81,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                 <Label Content="Réalisateur:" VerticalAlignment="Center" FontSize="15"/>
-                <ListBox Name="lstRealisateurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox Name="lstRealisateurs" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Nom}"/>
@@ -55,7 +91,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"   Margin="5,5,5,5">
                 <Label Content="Directeur:" VerticalAlignment="Center" FontSize="15"/>
-                <ListBox Name="lstDirecteurs" Background="Gray" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox Name="lstDirecteurs" Width="200" Height="70" SelectionMode="Multiple" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Nom}"/>
@@ -65,8 +101,20 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" Margin="5,5,5,5" Click="btnAjouter_Click"/>
-            <Button Name="btnRetour" Content="Retour" Width="100" Height="30" Click="btnRetour_Click"/>
+            <Button Name="btnAjouter" Content="Ajouter" Width="100" Height="30" Margin="5,5,20,5" Click="btnAjouter_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnRetour" Content="Retour" Width="100" Height="30" Click="btnRetour_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

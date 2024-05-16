@@ -25,11 +25,6 @@ namespace CineQuebec.Windows.View
             InitializeComponent();
         }
 
-        private void btnRetour_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
-        }
-
         private void btnInvitation_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).AdminTicketAvantPremiere();
@@ -39,6 +34,11 @@ namespace CineQuebec.Windows.View
         {
             ((MainWindow)Application.Current.MainWindow).AdminTicketGratuit();
 
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
         }
     }
 }

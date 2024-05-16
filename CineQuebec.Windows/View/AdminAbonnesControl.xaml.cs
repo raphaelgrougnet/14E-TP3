@@ -41,18 +41,6 @@ namespace CineQuebec.Windows.View
             } 
         }
 
-        private void btnFermer_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Une erreur est survenue lors de la fermeture de la page" + ex.Message, "Erreur");
-            }
-        }
-
         private void OffrirRecompense(Abonne abonne)
         {
             try
@@ -78,6 +66,11 @@ namespace CineQuebec.Windows.View
             {
                 OffrirRecompense(lstAbonnes.SelectedItem as Abonne);
             }
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).AdminHomeControl();
         }
     }
 }

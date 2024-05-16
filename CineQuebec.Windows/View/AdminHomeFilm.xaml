@@ -17,9 +17,24 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Foreground" Value="#eee8f6"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#eee8f6"/>
+                    <Setter Property="Foreground" Value="#3d52a1"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8697c4"/>
+                    <Setter Property="Foreground" Value="#3d52a1"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#eee8f6"/>
+            
+        </Style>
+
     </UserControl.Resources>
-    <Grid Background="#eee8f6">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
